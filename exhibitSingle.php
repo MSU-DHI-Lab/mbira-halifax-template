@@ -1,5 +1,6 @@
 <?php
-	require "lib/site.php";
+
+    require "lib/site.php";	
 
 	$count = $exhibits->getCount();
 	$titles = $exhibits->getTitles();
@@ -33,7 +34,7 @@
 
 <?php
     $pagename = $exhibit->getName();
-    include "lib/site.php";
+    /*include "lib/site.php";*/
     
 	include('includes/head.php');
 	include('includes/header.php');
@@ -42,7 +43,12 @@
 <!--===============================
 Landing Image
 ================================-->
-	<div id='landing' class="main" style="background: url('<?php echo $source.$exhibit->getHeaderPath();?>') center center">
+	<div id='landing' class="main" style="background: url('<?php echo $source.$exhibit->getHeaderPath();?>') center center;    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    overflow: hidden;">
 		<div id='landing-overlay-blend' class="main"></div>
 	</div>
 

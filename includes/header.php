@@ -1,5 +1,5 @@
 <header>
-    <?php require "lib/site.php"; ?>
+    <?php /*require "lib/site.php"; */?>
 	<a href="index.php" class="projectTitle">
         <?php 
             echo $projects->get(PROJID)->getName();

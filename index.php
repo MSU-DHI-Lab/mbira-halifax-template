@@ -20,7 +20,7 @@
 ?>
 
 <?php
-	require "lib/site.php";
+	/*require "lib/site.php";*/
 	$count = $exhibits->getCount();
 	$titles = $exhibits->getTitles();
 	$id_table = $exhibits->getIDs();
@@ -39,7 +39,12 @@
 <!--===============================
 Landing Image/Logo/Arrow
 ================================-->
-	<div id='landing' style="background: url('<?php echo $source.$project->getHeaderPath();?>') center center">>
+	<div id='landing' style="background: url('<?php echo $source.$project->getHeaderPath();?>') center center;    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    overflow: hidden;">
 		<div id='landing-overlay-blend'>
 			<h2 class="landing-h2"><?php echo $pagename ?></h2>
 			<h3 class="landing-h3">

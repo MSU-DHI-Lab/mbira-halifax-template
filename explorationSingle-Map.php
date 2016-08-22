@@ -57,7 +57,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/austintruchan/cinjdipo0001rb9nkjjh
 
 var iconCircle = L.icon({
     iconUrl: 'js/leaflet/images/marker-icon.svg',
-
 		iconSize:     [16, 16], // size of the icon
 		iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
@@ -67,35 +66,83 @@ var iconCircle = L.icon({
 L.marker([44.6488, -63.5752], {icon: iconCircle}).addTo(mymap)
 .bindPopup("<h2>Location Name Goes Here. Looks Pretty Cool!</h2><br /><p>Place description Decipherment dream of the mind's eye brain is the seed of intelligence. Science courage of our questions decipherment? Sea of Tranquility another world bits of moving fluff vastness is bearable only through love the only home we've ever known light years?Place description Decipherment dream of the mind's eye brain is the seed of intelligence. Science courage of our questions decipherment? Sea of Tranquility another world bits of moving fluff vastness is bearable only through love the only home we've ever known light years?</p><br /><a href='placeSingle.php'>VIEW LOCATION</a>");
 */
+         
+     
+
+     function getAreaCenter(coords) {
+         console.log(coords);
+        var coordsArray = coords.split(','),
+            center = [];
+
+            // For rect and poly areas we need to loop through the coordinates
+            var coord,
+                minX = maxX = parseInt(coordsArray[0], 10),
+                minY = maxY = parseInt(coordsArray[1], 10);
+            for (var i = 0, l = coordsArray.length; i < l; i++) {
+                coord = parseInt(coordsArray[i], 10);
+                if (i%2 == 0) { // Even values are X coordinates
+                    if (coord < minX) {
+                        minX = coord;
+                    } else if (coord > maxX) {
+                        maxX = coord;
+                    }
+                } else { // Odd values are Y coordinates
+                    if (coord < minY) {
+                        minY = coord;
+                    } else if (coord > maxY) {
+                        maxY = coord;
+                    }
+                }
+            }
+            center = [parseInt((minX + maxX) / 2, 10), parseInt((minY + maxY) / 2, 10)];
+        
+        return(center);
+    }
+     
+     
+     
+     
+     
+     
     var pointsArry = Array();
+    var latlng = Array();
      
     <?php             
         for ($x = 0; $x < count($stops); $x++) {
             $stops[$x] = str_replace("A", "", $stops[$x]);
             
+            // locations
 			if($locations->get($stops[$x]) != null){
 				$stop = $locations->get($stops[$x]);
     ?>
      
                 m = L.marker([<?php echo $stop->getLatitude() ;?>, <?php echo $stop->getLongitude();?>], {icon: iconCircle}).addTo(mymap)
-                        .bindPopup("<h2><?php echo $stop->getName();?></h2><br /><p><?php echo $stop->getDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>'>Start Exploration (<?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
+                        .bindPopup("<h2><?php echo $stop->getName();?></h2><br /><p><?php echo $stop->getDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
+               /* m.bindLabel("My Label");*/
                 pointsArry.push(m);
-                
+                latlng.push([<?php echo $stop->getLatitude() ;?>, <?php echo $stop->getLongitude();?>]);
+                /*m.addTo(mymap);*/
      <?php } ?>
      
      <?php            
+            // areas
             if($areas->get($stops[$x]) != null){
                 $stop = $areas->get($stops[$x]); 
     ?>
                 var coords = <?php echo $stop->getCoordinates(); ?>;
-                  var area  = L.polygon(coords, {
+                
+                var area  = L.polygon(coords, {
                 color: '#3EB9FD',
                 fillColor: '#3EB9FD',
                 fillOpacity: 0.6
-              }).addTo(mymap).bindPopup("<h2><?php echo $stop->getName()?></h2><br /><p><?php echo $stop->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>'>Start Exploration (<?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
+              }).addTo(mymap).bindPopup("<h2><?php echo $stop->getName()?></h2><br /><p><?php echo $stop->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
+     
+            
+            latlng.push([area.getBounds().getCenter().lat, area.getBounds().getCenter().lng]);
          <?php } ?>     
     <?php } ?>
      
+    var polyline = L.polyline(latlng, {color: 'white', weight: 2}).addTo(mymap);
     var group = new L.featureGroup(pointsArry);
     mymap.fitBounds(group.getBounds());
      

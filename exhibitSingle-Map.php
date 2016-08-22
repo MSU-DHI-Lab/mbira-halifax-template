@@ -106,8 +106,7 @@ Map
 		  "properties": {"ID": <?php echo $loc_ids[$x];?>}, 
 		  "geometry":{"type": "Point", "coordinates": [<?php echo $loc->getLatitude();?>, <?php echo $loc->getLongitude();?>]}
 		});
-	/*console.log(JSON.stringify(points[0]['features'][<?php echo $x; ?>]));*/
-	
+
 	m = L.marker([<?php echo $loc->getLatitude() ;?>, <?php echo $loc->getLongitude();?>], {icon: iconCircle}).addTo(mymap)
 			.bindPopup("<h2><?php echo $loc->getName();?></h2><br /><p><?php echo $loc->getDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $loc->getID();?>'>VIEW LOCATION</a>");
 	markerClusters.addLayer(m);
@@ -117,13 +116,7 @@ Map
 
 <script>
     var coords = <?php echo $area->getCoordinates(); ?>;
-/*    for(x=0; x<coords.length; x++)
-    {	
-        m = L.marker([coords[x]["lat"], coords[x]["lng"]], {icon: iconCircle}).addTo(mymap)
-        .bindPopup("<h2><?php echo $area->getName()?></h2><br /><p><?php echo $area->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $area->getID();?>'>VIEW AREA</a>");
-        pointsArry.push(m);
-    }*/
-    
+
     
   var area  = L.polygon(coords, {
     color: '#3EB9FD',
@@ -137,7 +130,6 @@ Map
 <script>
 	mymap.addLayer(markerClusters);
     mymap.fitBounds(group.getBounds());
-	/*mymap.fitBounds(markerClusters.getBounds());*/
 </script>
 
 <!--===============================

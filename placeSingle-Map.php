@@ -32,6 +32,7 @@
 ?>
 
 <?php
+    $pagename;
 	if($placeType == "L"){
         $pagename = $location->getName();
     }
@@ -39,7 +40,6 @@
         $pagename = $area->getName();
     }
 	
-    /* $pagename = 'Home'; */
 	include('includes/head.php');
 	include('includes/header.php');
 ?>

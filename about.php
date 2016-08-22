@@ -10,7 +10,12 @@
 <!--===============================
 Landing Image
 ================================-->
-<div id='landing' class="about" style="background: url('<?php echo $source.$project->getHeaderPath();?>') center center">>
+<div id='landing' class="about" style="background: url('<?php echo $source.$project->getHeaderPath();?>') center center;    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    overflow: hidden;">
     <div id='landing-overlay-blend' class="about"></div>
 </div>
 <!--===============================
