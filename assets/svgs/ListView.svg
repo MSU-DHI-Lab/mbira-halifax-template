@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="21px" viewBox="0 0 20 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: sketchtool 3.4.2 (385) - http://www.bohemiancoding.com/sketch -->
+    <title>ListView</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g sketch:type="MSArtboardGroup" transform="translate(-1207.000000, -3563.000000)" id="TheSitesOfAODL" fill="#FFFFFF">
+            <g sketch:type="MSLayerGroup" transform="translate(223.000000, 3551.000000)">
+                <g id="ListView" transform="translate(983.000000, 12.000000)" sketch:type="MSShapeGroup">
+                    <path d="M0.996,0.547 L9.926,0.547 L9.926,9.477 L0.996,9.477 L0.996,0.547 Z" id="Fill-1"></path>
+                    <path d="M0.996,11.128 L9.926,11.128 L9.926,20.059 L0.996,20.059 L0.996,11.128 Z" id="Fill-2"></path>
+                    <path d="M11.45,0.547 L20.381,0.547 L20.381,1.444 L11.45,1.444 L11.45,0.547 Z" id="Fill-3"></path>
+                    <path d="M11.45,2.14 L20.381,2.14 L20.381,3.039 L11.45,3.039 L11.45,2.14 Z" id="Fill-4"></path>
+                    <path d="M11.45,3.733 L20.381,3.733 L20.381,4.631 L11.45,4.631 L11.45,3.733 Z" id="Fill-5"></path>
+                    <path d="M11.45,11.128 L20.381,11.128 L20.381,12.026 L11.45,12.026 L11.45,11.128 Z" id="Fill-6"></path>
+                    <path d="M11.45,12.721 L20.381,12.721 L20.381,13.619 L11.45,13.619 L11.45,12.721 Z" id="Fill-7"></path>
+                    <path d="M11.45,14.314 L20.381,14.314 L20.381,15.211 L11.45,15.211 L11.45,14.314 Z" id="Fill-8"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

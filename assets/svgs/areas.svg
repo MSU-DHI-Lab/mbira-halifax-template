@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="49px" height="49px" viewBox="0 0 49 49" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39 (31667) - http://www.bohemiancoding.com/sketch -->
+    <title>areas</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Areas" transform="translate(-488.000000, -94.000000)" stroke="#FFFFFF">
+            <g id="areas" transform="translate(489.000000, 95.000000)">
+                <path d="M8,16 C12.418278,16 16,12.418278 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 Z" id="Oval-10-Copy-2"></path>
+                <path d="M39,16 C43.418278,16 47,12.418278 47,8 C47,3.581722 43.418278,0 39,0 C34.581722,0 31,3.581722 31,8 C31,12.418278 34.581722,16 39,16 Z" id="Oval-10-Copy-3"></path>
+                <path d="M39,47 C43.418278,47 47,43.418278 47,39 C47,34.581722 43.418278,31 39,31 C34.581722,31 31,34.581722 31,39 C31,43.418278 34.581722,47 39,47 Z" id="Oval-10-Copy-4"></path>
+                <path d="M8,47 C12.418278,47 16,43.418278 16,39 C16,34.581722 12.418278,31 8,31 C3.581722,31 0,34.581722 0,39 C0,43.418278 3.581722,47 8,47 Z" id="Oval-10-Copy-5"></path>
+                <path d="M16.5,8.5 L30.5,8.5" id="Line" stroke-linecap="square"></path>
+                <path d="M16.5,39.5 L30.5,39.5" id="Line-Copy-4" stroke-linecap="square"></path>
+                <path d="M8,31 L8,17" id="Line-Copy-5" stroke-linecap="square"></path>
+                <path d="M39,31 L39,17" id="Line-Copy-6" stroke-linecap="square"></path>
+            </g>
+        </g>
+    </g>
+</svg>

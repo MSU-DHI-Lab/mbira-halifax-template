@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="72px" height="18px" viewBox="0 0 72 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: sketchtool 3.4.2 (385) - http://www.bohemiancoding.com/sketch -->
+    <title>LogoSmall-Black</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g sketch:type="MSArtboardGroup" transform="translate(-240.000000, -1229.000000)" id="NavBar" fill="#3F3F3F">
+            <g sketch:type="MSLayerGroup" transform="translate(224.000000, 1217.000000)">
+                <g id="LogoSmall-Black" transform="translate(16.000000, 12.000000)" sketch:type="MSShapeGroup">
+                    <path d="M0,17 L9.48759945,0 L19,17 L0,17" id="Fill-1"></path>
+                    <path d="M36,9.00009742 C36,13.9645397 31.9642811,18 27.0001948,18 C22.0353293,18 18,13.9645397 18,9.00009742 C18,4.03526547 22.0353293,0 27.0001948,0 C31.9642811,0 36,4.03526547 36,9.00009742" id="Fill-2"></path>
+                    <path d="M55,8.50029021 C55,13.1875903 51.1875469,17 46.5001935,17 L38,17 L38,0 L46.5001935,0 C51.1875469,0 55,3.81318356 55,8.50029021" id="Fill-3"></path>
+                    <path d="M67.4985934,8.50029021 L67.4985934,0 L57,0 L57,17 L72,17 L72,8.50029021 L67.4985934,8.50029021" id="Fill-4"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

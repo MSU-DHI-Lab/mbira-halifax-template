@@ -1,0 +1,79 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'leaflet.markercluster@1.0.0-rc.1' ]
+2 info using npm@1.4.21
+3 info using node@v4.4.7
+4 verbose cache add [ 'leaflet.markercluster@1.0.0-rc.1', null ]
+5 verbose cache add name=undefined spec="leaflet.markercluster@1.0.0-rc.1" args=["leaflet.markercluster@1.0.0-rc.1",null]
+6 verbose parsed url Url {
+6 verbose parsed url   protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'leaflet.markercluster@1.0.0-rc.1',
+6 verbose parsed url   path: 'leaflet.markercluster@1.0.0-rc.1',
+6 verbose parsed url   href: 'leaflet.markercluster@1.0.0-rc.1' }
+7 verbose cache add name="leaflet.markercluster" spec="1.0.0-rc.1" args=["leaflet.markercluster","1.0.0-rc.1"]
+8 verbose parsed url Url {
+8 verbose parsed url   protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: '1.0.0-rc.1',
+8 verbose parsed url   path: '1.0.0-rc.1',
+8 verbose parsed url   href: '1.0.0-rc.1' }
+9 verbose addNamed [ 'leaflet.markercluster', '1.0.0-rc.1' ]
+10 verbose addNamed [ '1.0.0-rc.1', '1.0.0-rc.1' ]
+11 silly lockFile 9806ba8f-leaflet-markercluster-1-0-0-rc-1 leaflet.markercluster@1.0.0-rc.1
+12 verbose lock leaflet.markercluster@1.0.0-rc.1 /matrix/home/matt.chebowski/.npm/9806ba8f-leaflet-markercluster-1-0-0-rc-1.lock
+13 verbose request where is /leaflet.markercluster
+14 verbose request registry https://registry.npmjs.org/
+15 verbose request id b6f0f81d939cba63
+16 verbose url raw /leaflet.markercluster
+17 verbose url resolving [ 'https://registry.npmjs.org/', './leaflet.markercluster' ]
+18 verbose url resolved https://registry.npmjs.org/leaflet.markercluster
+19 verbose request where is https://registry.npmjs.org/leaflet.markercluster
+20 info trying registry request attempt 1 at 1:02:13 PM
+21 verbose etag "99NW55XT6OP88V655C4YE3GCD"
+22 http GET https://registry.npmjs.org/leaflet.markercluster
+23 http 304 https://registry.npmjs.org/leaflet.markercluster
+24 silly registry.get cb [ 304,
+24 silly registry.get   { date: 'Fri, 12 Aug 2016 17:02:13 GMT',
+24 silly registry.get     via: '1.1 varnish',
+24 silly registry.get     'cache-control': 'max-age=300',
+24 silly registry.get     etag: '"99NW55XT6OP88V655C4YE3GCD"',
+24 silly registry.get     age: '0',
+24 silly registry.get     connection: 'close',
+24 silly registry.get     'x-served-by': 'cache-ord1744-ORD',
+24 silly registry.get     'x-cache': 'MISS',
+24 silly registry.get     'x-cache-hits': '0',
+24 silly registry.get     'x-timer': 'S1471021333.998659,VS0,VE134',
+24 silly registry.get     vary: 'Accept-Encoding' } ]
+25 verbose etag https://registry.npmjs.org/leaflet.markercluster from cache
+26 silly lockFile 9806ba8f-leaflet-markercluster-1-0-0-rc-1 leaflet.markercluster@1.0.0-rc.1
+27 silly lockFile 9806ba8f-leaflet-markercluster-1-0-0-rc-1 leaflet.markercluster@1.0.0-rc.1
+28 error Error: version not found: leaflet.markercluster@1.0.0-rc.1
+28 error     at /usr/share/npm/lib/cache/add-named.js:125:12
+28 error     at saved (/usr/share/npm/node_modules/npm-registry-client/lib/get.js:167:7)
+28 error     at FSReqWrap.oncomplete (fs.js:82:15)
+29 error If you need help, you may report this *entire* log,
+29 error including the npm and node versions, at:
+29 error     <http://github.com/npm/npm/issues>
+30 error System Linux 3.16.0-4-amd64
+31 error command "/usr/bin/nodejs" "/usr/bin/npm" "install" "leaflet.markercluster@1.0.0-rc.1"
+32 error cwd /matrix/home/matt.chebowski/public_html/mbira_templates/Halifax
+33 error node -v v4.4.7
+34 error npm -v 1.4.21
+35 verbose exit [ 1, true ]
