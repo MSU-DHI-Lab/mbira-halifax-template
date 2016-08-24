@@ -91,7 +91,7 @@ Exhibits Connected Places
                         </div>
                         <div class="collection-info">
                                 <h2 class="collection-title">'.$location->getName().'</h2>
-                                        <a href="placeSingle.php?id='.$location_ids[$x].'" class="collection-link">View Project</a>
+                                        <a href="placeSingle.php?id='.$location_ids[$x].'&type=L" class="collection-link">View Project</a>
                         </div>
                     </div>
                 ';
@@ -107,7 +107,7 @@ Exhibits Connected Places
                         </div>
                         <div class="collection-info">
                                 <h2 class="collection-title">'.$area->getName().'</h2>
-                                        <a href="placeSingle.php?id='.$area_ids[$x].'" class="collection-link">View Project</a>
+                                        <a href="placeSingle.php?id='.$area_ids[$x].'&type=A" class="collection-link">View Project</a>
                         </div>
                     </div>
                 ';

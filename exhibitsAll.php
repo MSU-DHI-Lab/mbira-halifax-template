@@ -37,21 +37,25 @@ Exhibits Grid
                             <img src='<?php echo $source.$exhibits->get($exhIDs[$x])->getThumbPath(); ?>' />
                     </div>
                     <div class='collection-info'>
-                            <h2 class='collection-title'><?php echo $exhibits->get($exhIDs[$x])->getName();?></h2>
-                                    <a href="exhibitSingle.php?id=<?php echo $exhIDs[$x];?>" class='collection-link'>View Project</a>
+                        <h2 class='collection-title'><?php echo $exhibits->get($exhIDs[$x])->getName();?></h2>
+                        <a href="exhibitSingle.php?id=<?php echo $exhIDs[$x];?>" class='collection-link'>View Project</a>
                     </div>
                 </div>
             <?php } ?>
+     
         
             <div class='collection-container'>
-				<div class='collection-image-surprise'>
-						<img src='assets/svgs/surpriseMe.svg'/>
-				</div>
-				<div class='collection-info-surprise'>
-						<h2 class='collection-title'>SURPRISE ME</h2>
-								<a href="" class='collection-link'>View Project</a>
-				</div>
-			</div>
+                    <div class='collection-image-surprise'>
+                            <img src='assets/svgs/surpriseMe.svg' />
+                    </div> 
+                    <a href="exhibitSingle.php?id=<?php
+                             echo $exhIDs[array_rand($exhIDs)];                             
+                             ?>">
+                        <div class='collection-info-surprise'>
+                            <h2 class='collection-title'>SURPRISE ME</h2>
+                        </div>
+                    </a>
+            </div>
 
 	</div>
 </section>

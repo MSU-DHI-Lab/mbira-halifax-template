@@ -124,6 +124,7 @@ Map
     fillOpacity: 0.6
   }).addTo(mymap).bindPopup("<h2><?php echo $area->getName()?></h2><br /><p><?php echo $area->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $area->getID();?>'>VIEW AREA</a>");
 
+    pointsArry.push(L.marker([area.getBounds().getCenter().lat, area.getBounds().getCenter().lng], {icon: iconCircle}));
     var group = new L.featureGroup(pointsArry);
 </script>
 

@@ -78,38 +78,78 @@ Exploration Stops
         for ($x = 0; $x < count($stops); $x++) {
 			
             $stops[$x] = str_replace("A", "", $stops[$x]);
+            $stopsArray = array();
+            $type = array();
+                   
+            if($locations->get($stops[$x]) == null || $areas->get($stops[$x]) == null){ 
             
-			if($locations->get($stops[$x]) != null){
-				$stop = $locations->get($stops[$x]);
-			
-					echo '
-						<div class="collection-container">
-							<div class="collection-image">
-									<img src='.$source.$stop->getThumbPath().' />
-							</div>
-							<div class="collection-info">
-									<h2 class="collection-title">'.$stop->getName().'</h2>
-											<a href="placeSingle.php?id='.$stops[$x].'&s='.($x+1).'&t='.count($stops).'&expid='.$_GET['id'].'" class="collection-link">View Project</a>
-							</div>
-						</div>
-					';
-			}
-			
-			if($areas->get($stops[$x]) != null){
-				$stop = $areas->get($stops[$x]);
-			
-					echo '
-						<div class="collection-container">
-							<div class="collection-image">
-									<img src='.$source.$stop->getThumbPath().' />
-							</div>
-							<div class="collection-info">
-									<h2 class="collection-title">'.$stop->getName().'</h2>
-											<a href="placeSingle.php?id='.$stops[$x].'&s='.($x+1).'&t='.count($stops).'&expid='.$_GET['id'].'" class="collection-link">View Project</a>
-							</div>
-						</div>
-					';
-			}
+                if($locations->get($stops[$x]) != null){
+                    $stop = $locations->get($stops[$x]);
+                        echo '
+                            <div class="collection-container">
+                                <div class="collection-image">
+                                        <img src='.$source.$stop->getThumbPath().' />
+                                </div>
+                                <div class="collection-info">
+                                        <h2 class="collection-title">'.$stop->getName().'</h2>
+                                                <a href="placeSingle.php?id='.$stops[$x].'&type=L&s='.($x+1).'&t='.count($stops).'&expid='.$_GET['id'].'" class="collection-link">View Project</a>
+                                </div>
+                            </div>
+                        ';
+                }
+
+                if($areas->get($stops[$x]) != null){
+                    $stop = $areas->get($stops[$x]);
+                        echo '
+                            <div class="collection-container">
+                                <div class="collection-image">
+                                        <img src='.$source.$stop->getThumbPath().' />
+                                </div>
+                                <div class="collection-info">
+                                        <h2 class="collection-title">'.$stop->getName().'</h2>
+                                                <a href="placeSingle.php?id='.$stops[$x].'&type=A&s='.($x+1).'&t='.count($stops).'&expid='.$_GET['id'].'" class="collection-link">View Project</a>
+                                </div>
+                            </div>
+                        ';
+                }
+            }
+            
+            if($locations->get($stops[$x]) != null && $areas->get($stops[$x]) != null){ 
+                
+                if($locations->get($stops[$x]) != null){
+                    $stop = $locations->get($stops[$x]);
+                        echo '
+                            <div class="collection-container">
+                                <div class="collection-image">
+                                        <img src='.$source.$stop->getThumbPath().' />
+                                </div>
+                                <div class="collection-info">
+                                        <h2 class="collection-title">'.$stop->getName().'</h2>
+                                                <a href="placeSingle.php?id='.$stops[$x].'&type=L&s='.($x+1).'&t='.count($stops).'&expid='.$_GET['id'].'" class="collection-link">View Project</a>
+                                </div>
+                            </div>
+                        ';
+                }
+
+                if($areas->get($stops[$x]) != null){
+                    $stop = $areas->get($stops[$x]);
+                        echo '
+                            <div class="collection-container">
+                                <div class="collection-image">
+                                        <img src='.$source.$stop->getThumbPath().' />
+                                </div>
+                                <div class="collection-info">
+                                        <h2 class="collection-title">'.$stop->getName().'</h2>
+                                                <a href="placeSingle.php?id='.$stops[$x].'&type=A&s='.($x+1).'&t='.count($stops).'&expid='.$_GET['id'].'" class="collection-link">View Project</a>
+                                </div>
+                            </div>
+                        ';
+                }
+                
+                
+                $x++;
+            }
+            
 		}
     ?>
 	</div>

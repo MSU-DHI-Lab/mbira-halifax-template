@@ -1,6 +1,6 @@
 <?php
     require "lib/site.php";
-    ob_start();	
+    /*ob_start();	*/
 	$pagename = 'Sign Up';
 	include('includes/head.php');
 	include('includes/header.php');
@@ -25,6 +25,14 @@ Sign Up Form & Submit
 ================================-->
 <section id='signInUp' class="main">
 	<form class="signInUpForm" name="login" action="profile.php" method="post" accept-charset="utf-8">
+        
+            <?php
+                if(isset($_SESSION['newuser-error'])) {
+                    echo "<p>" . $_SESSION['newuser-error'] . "</p>";
+                    unset($_SESSION['newuser-error']);
+                }
+            ?>
+        
 			<label for="usermail">First Name</label>
 			<input class="loginField" type="text" name="firstname" placeholder="FIRST NAME"><br>
 			<label for="usermail">Last Name</label>

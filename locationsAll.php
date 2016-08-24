@@ -61,16 +61,20 @@ Locations Grid
 			</div>
                         
         <?php } ?>
-        
+                
             <div class='collection-container'>
-				<div class='collection-image-surprise'>
-						<img src='assets/svgs/surpriseMe.svg'/>
-				</div>
-				<div class='collection-info-surprise'>
-						<h2 class='collection-title'>SURPRISE ME</h2>
-								<a href="" class='collection-link'>View Project</a>
-				</div>
-			</div>
+                    <div class='collection-image-surprise'>
+                            <img src='assets/svgs/surpriseMe.svg' />
+                    </div> 
+                    <a href="placeSingle.php?id=<?php
+                             echo $loc_ids[array_rand($loc_ids)];                             
+                             ?>">
+                        <div class='collection-info-surprise'>
+                            <h2 class='collection-title'>SURPRISE ME</h2>  
+                        </div>
+                    </a>
+            </div>
+        
 
 	</div>
 </section>

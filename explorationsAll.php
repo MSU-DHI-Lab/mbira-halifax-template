@@ -43,7 +43,7 @@ Explorations Grid
                 </div>
             <?php } ?>
         
-            <div class='collection-container'>
+<!--            <div class='collection-container'>
 				<div class='collection-image-surprise'>
 						<img src='assets/svgs/surpriseMe.svg'/>
 				</div>
@@ -51,8 +51,21 @@ Explorations Grid
 						<h2 class='collection-title'>SURPRISE ME</h2>
 								<a href="" class='collection-link'>View Project</a>
 				</div>
-			</div>
+			</div>-->
 
+            <div class='collection-container'>
+                    <div class='collection-image-surprise'>
+                            <img src='assets/svgs/surpriseMe.svg' />
+                    </div> 
+                    <a href="explorationSingle.php?id=<?php
+                             echo $expIDs[array_rand($expIDs)];                             
+                             ?>">
+                        <div class='collection-info-surprise'>
+                            <h2 class='collection-title'>SURPRISE ME</h2>
+                        </div>
+                    </a>
+            </div>
+        
 	</div>
 </section>
 

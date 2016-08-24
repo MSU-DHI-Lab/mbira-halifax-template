@@ -1,9 +1,18 @@
 <?php
     require "lib/site.php";
-    ob_start();		
+    /*ob_start();*/		
 	$pagename = 'Sign In';
 	include('includes/head.php');
 	include('includes/header.php');
+?>
+
+
+<?php
+    if (isset($_SESSION['login-error'])) {
+        $msg = $_SESSION['login-error'];
+    } else {
+        $msg = '';
+    }
 ?>
 
 <!--===============================
@@ -20,11 +29,14 @@ Sign In Title
 	<h2 class="signInUp">Sign In</h2>
 </section>
 
+<?php if(!isset($_SESSION['user'])) { ?>
+
 <!--===============================
 Sign In Form & Submit
 ================================-->
 <section id='signInUp' class="main">
-	<form class="signInUpForm" name="login" action="loggedIn.php" method="post" accept-charset="utf-8">
+	<!--<form class="signInUpForm" name="login" action="loggedIn.php" method="post" accept-charset="utf-8">-->
+    <form class="signInUpForm" name="login" action="login-post.php" method="post" accept-charset="utf-8">
 			 <label for="usermail">Email</label>
 			 <input class="loginField" type="email" name="usermail" placeholder="EMAIL"><br>
 			 <label for="password">Password</label>
@@ -34,7 +46,16 @@ Sign In Form & Submit
 			 <a href="signUp.php" class="signUpButton">SIGN UP?</a>
 
 </section>
+<?php  } ?>
 
+    
+
+<?php if(isset($_SESSION['user'])){ ?>
+    <form id="loginForm" action="post/logout-post.php" method="post">
+        <p>You're already logged in, click the button below to logout.</p>
+        <input type="submit" value="Log out">
+    </form>
+<?php } ?>
 <!--===============================
 Scripts & Footer
 ================================-->

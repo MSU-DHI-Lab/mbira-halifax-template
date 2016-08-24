@@ -58,81 +58,25 @@ Areas Grid
 				</div>
 				<div class='collection-info'>
 						<h2 class='collection-title'><?php echo $areas->get($area_ids[$i])->getName()?></h2>
-								<a href="placeSingle.php?id=<?php echo $area_ids[$i];?>" class='collection-link'>View Project</a>
+								<a href="placeSingle.php?id=<?php echo $area_ids[$i];?>&type=A" class='collection-link'>View Project</a>
 				</div>
 			</div>
                         
         <?php } ?>
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-<!--        
-			<div class='collection-container'>
-				<div class='collection-image'>
-						<img src='assets/imgs/1.jpg' />
-				</div>
-				<div class='collection-info'>
-						<h2 class='collection-title'>Area Title will go here just like this!</h2>
-								<a href="placeSingle.php" class='collection-link'>View Project</a>
-				</div>
-			</div>-->
-			
-			<?php
-			// areas
-/*			$allProjs = $projects->get_all();
-			for($j=0; $j<count($allProjs); $j++)
-			{
-				// this is not an array - nedes to be fixed
-				for($projects->get($allProjs[j]) as  $val)
-				{
-				$area = $areas->get($val);
-                echo '
-                    <div class="collection-container">
-                        <div class="collection-image">
-                                <img src='.$source.''.$area->getThumbPath().' />
-                        </div>
-                        <div class="collection-info">
-                                <h2 class="collection-title">'.$area->getName().'</h2>
-                                        <a href="placeSingle.php?id='.$val.'" class="collection-link">View Project</a>
-                        </div>
-                    </div>
-                ';
-				}
-			}*/
-			
-/*             for ($x = 0; $x < count($area_ids); $x++) {
-                $area = $areas->get($area_ids[$x]);
-                echo '
-                    <div class="collection-container">
-                        <div class="collection-image">
-                                <img src='.$source.''.$area->getThumbPath().' />
-                        </div>
-                        <div class="collection-info">
-                                <h2 class="collection-title">'.$area->getName().'</h2>
-                                        <a href="placeSingle.php?id='.$area_ids[$x].'" class="collection-link">View Project</a>
-                        </div>
-                    </div>
-                ';
-            } */
-			?>
-			
             <div class='collection-container'>
-				<div class='collection-image-surprise'>
-						<img src='assets/svgs/surpriseMe.svg'/>
-				</div>
-				<div class='collection-info-surprise'>
-						<h2 class='collection-title'>SURPRISE ME</h2>
-								<a href="" class='collection-link'>View Project</a>
-				</div>
-			</div>
-
+                    <div class='collection-image-surprise'>
+                            <img src='assets/svgs/surpriseMe.svg' />
+                    </div> 
+                    <a href="placeSingle.php?id=<?php
+                             echo $areas->get_random();                             
+                             ?>&type=A">
+                        <div class='collection-info-surprise'>
+                            <h2 class='collection-title'>SURPRISE ME</h2>  
+                        </div>
+                    </a>
+            </div>
 	</div>
 </section>
 
