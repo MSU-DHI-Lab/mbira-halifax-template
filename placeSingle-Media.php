@@ -52,7 +52,13 @@ Landing Image
     else if($placeType == "A") {
         echo $source.$area->getHeaderPath();
     }
-    ?>') center center">
+    ?>') center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;">
     <div id='landing-overlay-blend' class="placeSub"></div>
 </div>
 

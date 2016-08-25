@@ -117,6 +117,14 @@ Map
 <script>
     var coords = <?php echo $area->getCoordinates(); ?>;
 
+    var pointsArry = Array();
+    var coords = <?php echo $area->getCoordinates(); ?>;
+    for(x=0; x<coords.length; x++)
+    {	
+        m = L.marker([coords[x]["lat"], coords[x]["lng"]]);
+        pointsArry.push(m);
+    }
+    
     
   var area  = L.polygon(coords, {
     color: '#3EB9FD',

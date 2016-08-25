@@ -39,9 +39,22 @@
 <!--===============================
 Landing Image
 ================================-->
-	<div id='landing' class="placeSub">
-		<div id='landing-overlay-blend' class="placeSub"></div>
-	</div>
+<div id='landing' class="placeSub" style="background: url('<?php 
+    if($placeType == "L") {
+        echo $source.$location->getHeaderPath();
+    }
+    else if($placeType == "A") {
+        echo $source.$area->getHeaderPath();
+    }
+    ?>') center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;">
+    <div id='landing-overlay-blend' class="placeSub"></div>
+</div>
 
 <!--===============================
 Place on Exploration Controls (Only active when user has selected "start Exploration")
