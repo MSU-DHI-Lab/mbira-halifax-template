@@ -230,8 +230,22 @@ Media
 <section id='media'>
 	<div id='collections-layout' class='collections-grid'>
         <?php
+            $modalTitle = "Title";
+            $modalDesc = "Desc";
+        
 			if($placeType == "L") {
-				foreach($loc_media as $val){
+                for($x=0; $x<count($loc_media); $x++){
+                    echo "<div class='collection-container' class='openComingSoon'>
+                        <a href='#' class='openModalMedia'>
+                            <div class='collection-image'>
+                                <img src='".$source.$loc_media[$x]['file_path']."' />
+                                <h3 id='locTitle' style='visibility: hidden;'>".$loc_media[$x]['title']."</h3>
+                                <p id='locDesc' style='visibility: hidden;'>".$loc_media[$x]['description']."</p>
+                            </div>
+                        </a>
+                    </div>";
+				}
+/*				foreach($loc_media as $val){
                     echo "<div class='collection-container' class='openComingSoon'>
                         <a href='#' class='openModalMedia'>
                             <div class='collection-image'>
@@ -239,11 +253,22 @@ Media
                             </div>
                         </a>
                     </div>";
-				} 
+				} */
 			}			
 			
 			else if($placeType == "A") {
-				foreach($area_media as $val){
+                for($x=0; $x<count($area_media); $x++){
+                    echo "<div class='collection-container' class='openComingSoon'>
+                        <a href='#' class='openModalMedia'>
+                            <div class='collection-image'>
+                                <img src='".$source.$area_media[$x]['file_path']."' />
+                                <h3 id='areaTitle' style='visibility: hidden;'>".$area_media[$x]['title']."</h3>
+                                <p id='areaDesc' style='visibility: hidden;'>".$area_media[$x]['description']."</p>
+                            </div>
+                        </a>
+                    </div>";
+				}
+/*				foreach($area_media as $val){
 					echo "<div class='collection-container' class='openComingSoon'>
 						<a href='#' class='openModalMedia'>
 							<div class='collection-image'>
@@ -251,8 +276,9 @@ Media
 							</div>
 						</a>
 					</div>";
-				} 
+				} */
 			}
+                
         ?>
 	</div>
 </section>

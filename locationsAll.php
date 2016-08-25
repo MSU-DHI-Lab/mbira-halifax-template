@@ -68,7 +68,7 @@ Locations Grid
                     </div> 
                     <a href="placeSingle.php?id=<?php
                              echo $loc_ids[array_rand($loc_ids)];                             
-                             ?>">
+                             ?>&type=L">
                         <div class='collection-info-surprise'>
                             <h2 class='collection-title'>SURPRISE ME</h2>  
                         </div>
