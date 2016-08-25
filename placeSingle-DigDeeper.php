@@ -193,10 +193,89 @@ Place NavBar
 	<?php } ?>
 	
 	<div class="right">
-		<a class="active" href="placeSingle-Map.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Map</a>
-		<a href="placeSingle-Media.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Media</a>
-		<a href="placeSingle-Conversations.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Conversations</a>
-		<a href="placeSingle-DigDeeper.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Dig Deeper</a></div>
+
+    <a class="active" href="placeSingle-Map.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Map</a>
+        
+        
+        
+        <?php if ($placeType == "L") {
+        foreach($locations->getMediaToggle($_GET['id'])[0] as $val)
+        {
+            if($val == "true"){        
+                ?>
+                <a href="placeSingle-Media.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Media</a>
+                <?php
+                            break;
+                        }
+            }
+        } ?>
+        <?php if ($placeType == "A") {
+        foreach($areas->getMediaToggle($_GET['id'])[0] as $val)
+        {
+            if($val == "true"){        
+                ?>
+                <a href="placeSingle-Media.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Media</a>
+                <?php
+                    break;
+                }
+            }
+        } ?>
+        
+        
+        
+        
+        
+        <?php if ($placeType == "L") {
+        foreach($locations->getCommentsToggle($_GET['id'])[0] as $val)
+        {
+            if($val == "true"){        
+            ?>
+            <a href="placeSingle-Conversations.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Conversations</a>
+            <?php
+                        break;
+                    }
+            }
+        } ?>
+        <?php if ($placeType == "A") {
+        foreach($areas->getCommentsToggle($_GET['id'])[0] as $val)
+        {
+            if($val == "true"){        
+                ?>
+                <a href="placeSingle-Conversations.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Conversations</a>
+                <?php
+                    break;
+                }
+            }
+        } ?>
+        
+        
+        
+        
+        
+        <?php if ($placeType == "L") {
+        foreach($locations->getDigDeeperToggle($_GET['id'])[0] as $val)
+        {
+            if($val == "true"){        
+                ?>
+                <a href="placeSingle-DigDeeper.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Dig Deeper</a>
+                <?php
+                            break;
+                        }
+                    }
+        } ?>
+        <?php if ($placeType == "A") {
+        foreach($areas->getDigDeeperToggle($_GET['id'])[0] as $val)
+        {
+            if($val == "true"){        
+            ?>
+            <a href="placeSingle-DigDeeper.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Dig Deeper</a>
+            <?php
+                        break;
+                    }
+                }
+        } ?>
+    
+    </div>
 </div>
 
 <!--===============================

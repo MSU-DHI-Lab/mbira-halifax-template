@@ -219,24 +219,123 @@ Exhibit Nave & About
 				<p class="placeNavItemTitle">VIEW ON MAP</p>
 			</div>
 		</a>
+        
+        
+        
+        <?php if ($placeType == "L") {
+        foreach($locations->getMediaToggle($_GET['id'])[0] as $val)
+        {
+            if($val == "true"){        
+        ?>
 		<a href="placeSingle-Media.php?id=<?php echo $_GET['id']; ?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {?>&s=<?php echo $_GET['s']?>&t=<?php echo $_GET['t']?>&expid=<?php echo $_GET['expid']?><?php } ?>">
 			<div class="placeNavItem">
 			<img src="assets/svgs/media.svg"/>
 				<p class="placeNavItemTitle">VIEW MEDIA</p>
 			</div>
 		</a>
+        <?php
+                    break;
+                }
+            }
+        } ?>
+        <?php if ($placeType == "A") {
+        foreach($areas->getMediaToggle($_GET['id'])[0] as $val)
+        {
+            if($val == "true"){        
+        ?>
+		<a href="placeSingle-Media.php?id=<?php echo $_GET['id']; ?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {?>&s=<?php echo $_GET['s']?>&t=<?php echo $_GET['t']?>&expid=<?php echo $_GET['expid']?><?php } ?>">
+			<div class="placeNavItem">
+			<img src="assets/svgs/media.svg"/>
+				<p class="placeNavItemTitle">VIEW MEDIA</p>
+			</div>
+		</a>
+        <?php
+                    break;
+                }
+            }
+        } ?>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <?php if ($placeType == "L") {
+            foreach($locations->getCommentsToggle($_GET['id'])[0] as $val)
+            {
+                if($val == "true"){        
+        ?>
 		<a href="placeSingle-Conversations.php?id=<?php echo $_GET['id']; ?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {?>&s=<?php echo $_GET['s']?>&t=<?php echo $_GET['t']?>&expid=<?php echo $_GET['expid']?><?php } ?>">
 			<div class="placeNavItem">
 			<img src="assets/svgs/conversations.svg"/>
 				<p class="placeNavItemTitle">VIEW CONVERSATIONS</p>
 			</div>
 		</a>
+        <?php
+                    break;
+                }
+            }
+        } ?>   
+        
+        <?php if ($placeType == "A") {
+            foreach($areas->getCommentsToggle($_GET['id'])[0] as $val)
+            {
+                if($val == "true"){        
+        ?>
+		<a href="placeSingle-Conversations.php?id=<?php echo $_GET['id']; ?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {?>&s=<?php echo $_GET['s']?>&t=<?php echo $_GET['t']?>&expid=<?php echo $_GET['expid']?><?php } ?>">
+			<div class="placeNavItem">
+			<img src="assets/svgs/conversations.svg"/>
+				<p class="placeNavItemTitle">VIEW CONVERSATIONS</p>
+			</div>
+		</a>
+        <?php
+                    break;
+                }
+            }
+        } ?>
+        
+        
+        
+        
+        
+        
+        <?php if ($placeType == "L") {
+                    foreach($locations->getDigDeeperToggle($_GET['id'])[0] as $val)
+                    {
+                        if($val == "true"){        
+        ?>
 		<a href="placeSingle-DigDeeper.php?id=<?php echo $_GET['id']; ?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {?>&s=<?php echo $_GET['s']?>&t=<?php echo $_GET['t']?>&expid=<?php echo $_GET['expid']?><?php } ?>">
 			<div class="placeNavItem">
 			<img src="assets/svgs/digDeeper.svg"/>
 				<p class="placeNavItemTitle">DIG DEEPER</p>
 			</div>
 		</a>
+        <?php
+                    break;
+                }
+            }
+        } ?>    
+        <?php if ($placeType == "A") {
+                    foreach($areas->getDigDeeperToggle($_GET['id'])[0] as $val)
+                    {
+                        if($val == "true"){        
+        ?>
+		<a href="placeSingle-DigDeeper.php?id=<?php echo $_GET['id']; ?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {?>&s=<?php echo $_GET['s']?>&t=<?php echo $_GET['t']?>&expid=<?php echo $_GET['expid']?><?php } ?>">
+			<div class="placeNavItem">
+			<img src="assets/svgs/digDeeper.svg"/>
+				<p class="placeNavItemTitle">DIG DEEPER</p>
+			</div>
+		</a>
+        <?php
+                    break;
+                }
+            }
+        } ?>
+        
+        
 	</div>
 	<p>
         <?php 
