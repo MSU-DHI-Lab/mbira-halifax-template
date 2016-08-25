@@ -65,10 +65,10 @@
 		<li><a href="placeSingle.php?id=<?php
             
 				if(rand(0,1000)%2 == 1){
-                    echo $locations->get_random();
+                    echo $locations->get_random().'&type=L';
 				}
 				else {
-					echo $areas->get_random();
+					echo $areas->get_random().'&type=A';
 				}
 
                 ?>
