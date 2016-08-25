@@ -992,6 +992,7 @@ through a media query only recognized in IE */
     .onExploration{
         position: relative;
         top: -75vh;
+        z-index: 334;
     }
     .onExploration.sub{
       top: 120px !important;

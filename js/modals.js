@@ -15,6 +15,20 @@
 * Anything with class='closeComingSoon' closes the modal on click event
 * diplayModal is the CSS class that displays the modal (obvious, I know)
 ==========================================================================*/
+$('#copyLink').click(function() {
+	$('#modal').addClass('displayModal');
+	$('body').addClass('modal-open');
+	return false;
+});
+
+
+$('#modal-x-btn').click(function() {
+	$('#modal').removeClass('displayModal');
+	$('body').removeClass('modal-open');
+});
+
+
+
 $('.openModal').click(function() {
 	$('#modal').addClass('displayModal');
 	$('body').addClass('modal-open');
