@@ -401,7 +401,7 @@ SQL;
     
         <div class="conversationCard">
             <div class="userDate">
-                <p class="userName"><?php echo $user->getEmail(); ?></p>
+                <p class="userName"><?php echo $comments[$i]['user'] ?></p>
                 <div class="tooltip"><span class="tooltiptext">Citizen Expert</span><img src="assets/svgs/citizenExpert.svg" /></div>
                 <div class="tooltip"><span class="tooltiptext">Project Expert</span><img src="assets/svgs/projectExpert.svg"/></div>
                 <div class="tooltip"><span class="tooltiptext">Project Person</span><img src="assets/svgs/projectPerson.svg"/></div>
@@ -410,19 +410,20 @@ SQL;
 
             <div class="conversationPreview">
                 <p>
-                    <?php echo $comments[$i]['comment'] ?>
+                    <?php echo $comments[$i]['comment'];?>
                 </p>
             </div>
 
             <div class="viewConversation">
-                <p>3 Particpants</p>
-                <a href="placeSingle-Conversation.php">VIEW CONVERSATION <img src="assets/svgs/arrowBlue.svg"/></a>
+                <p><?php echo count($comments[$i]['replies'])?> Particpants</p>
+                <a href="placeSingle-Conversation.php?id=<?php echo $_GET['id']?>&type=<?php echo $_GET['type']?>&convo=<?php echo $comments[$i]['comment_id']; ?>">VIEW CONVERSATION <img src="assets/svgs/arrowBlue.svg"/></a>
             </div>
         </div>
     
     <?php
         } 
-    }?> 
+    }
+    ?> 
     
     <?php
         if(count($comments) == 0) {
@@ -445,15 +446,48 @@ SQL;
 	</div></div>-->
 </section>
 
-<a href="#" class="bottomButton openModalStartConversation">Start Conversation</a>
+<a href="" class="bottomButton openModalStartConversation">Start Conversation</a>
 
+
+                
 <!--===============================
 Modals Include
 ================================-->
 <?php
 	include('includes/modalStartConversation.php');
-	include('includes/modalLogInPrompt.php');
+    include('includes/modalLogInPrompt.php');   
 ?>
+
+
+<?php if(!isset($_SESSION['user'])){ ?>
+<script> 
+$('.openModalStartConversation').click(function() {
+	$('#modalLogInPrompt').addClass('displayModal');
+	$('body').addClass('modal-open');
+	return false;
+});
+$('.closeModalLogInPrompt').click(function() {
+	$('#modalLogInPrompt').removeClass('displayModal');
+	$('body').removeClass('modal-open');
+});
+</script>
+<?php } ?>
+
+
+<?php if(isset($_SESSION['user'])){ ?>
+<script>
+$('.openModalStartConversation').click(function() {
+	$('#modalStartConversation').addClass('displayModal');
+	$('body').addClass('modal-open');
+	return false;
+});
+$('#modal-x-btn').click(function() {
+	$('#modal').removeClass('displayModal');
+	$('body').removeClass('modal-open');
+});
+</script>
+<?php } ?>
+
 
 <!--===============================
 Scripts & Footer

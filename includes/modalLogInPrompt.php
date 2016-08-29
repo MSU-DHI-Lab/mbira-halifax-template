@@ -17,7 +17,7 @@
 					<a href="#" class="rightLink" id="forgotPasswordLink">Forgot Password?</a>
 				</div>
 			</div>
-			<a href="#" class="modalBottomButton">SIGN IN</a>
+			<a href="modalStartConversation.php" class="modalBottomButton">SIGN IN</a>
 		</form>
 	</div>
 </div>

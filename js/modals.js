@@ -55,16 +55,16 @@ $('.closeModalMedia').click(function() {
 
 
 
-$('.openModalStartConversation').click(function() {
+/*$('.openModalStartConversation').click(function() {
 	$('#modalLogInPrompt').addClass('displayModal');
 	$('body').addClass('modal-open');
 	return false;
 });
-
-$('.closeModalLogInPrompt').click(function() {
+*/
+/*$('.closeModalLogInPrompt').click(function() {
 	$('#modalLogInPrompt').removeClass('displayModal');
 	$('body').removeClass('modal-open');
-});
+});*/
 
 $('.openModalParticipateInConversation').click(function() {
 	$('#modalParticipateInConversation').addClass('displayModal');
