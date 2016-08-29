@@ -56,7 +56,7 @@ Locations Grid
 				</div>
 				<div class='collection-info'>
 						<h2 class='collection-title'><?php echo $locations->get($loc_ids[$i])->getName()?></h2>
-								<a href="placeSingle.php?id=<?php echo $loc_ids[$i];?>" class='collection-link'>View Project</a>
+								<a href="placeSingle.php?id=<?php echo $loc_ids[$i];?>&type=L" class='collection-link'>View Project</a>
 				</div>
 			</div>
                         

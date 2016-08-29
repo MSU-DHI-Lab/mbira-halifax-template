@@ -25,12 +25,21 @@ Landing Image
 <!--===============================
 Sign In Title
 ================================-->
+<?php if(isset($_SESSION['user'])){ ?>
+<section id='main' class="signInUp">
+	<h2 class="signInUp">You're already logged in, click the button below to logout.</h2>
+</section>
+<section id='signInUp' class="main">
+    <form class="signInUpForm" name="login" action="logout-post.php" method="post" accept-charset="utf-8">
+        <input class="Submit signUp" type="submit" value="LOG OUT">
+</section>
+<?php } ?>
+
+
+<?php if(!isset($_SESSION['user'])) { ?>
 <section id='main' class="signInUp">
 	<h2 class="signInUp">Sign In</h2>
 </section>
-
-<?php if(!isset($_SESSION['user'])) { ?>
-
 <!--===============================
 Sign In Form & Submit
 ================================-->
@@ -47,15 +56,6 @@ Sign In Form & Submit
 
 </section>
 <?php  } ?>
-
-    
-
-<?php if(isset($_SESSION['user'])){ ?>
-    <form id="loginForm" action="post/logout-post.php" method="post">
-        <p>You're already logged in, click the button below to logout.</p>
-        <input type="submit" value="Log out">
-    </form>
-<?php } ?>
 <!--===============================
 Scripts & Footer
 ================================-->

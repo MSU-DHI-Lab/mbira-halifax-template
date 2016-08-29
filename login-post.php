@@ -6,7 +6,7 @@ if(isset($_POST['usermail']) && isset($_POST['password'])) {
     $users = new Users($site);
     $user = $users->login($_POST['usermail'], $_POST['password']);
     if(!is_string($user)) {
-        $_SESSION['usermail'] = $user;
+        $_SESSION['user'] = $user;
         unset($_SESSION['login-error']);
         header("location: ../");
         exit;

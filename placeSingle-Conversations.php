@@ -285,51 +285,152 @@ Place NavBar
 <!--===============================
 Conversations
 ================================-->
+
+<?php
+/*	$user;
+	if(isset($_SESSION['user'])) {
+		$user = $_SESSION['user'];
+		$usersName = $user->getEmail();
+        
+        echo "user: ".$usersName;
+	}*/
+
+if(isset($_GET['id'])) {
+		$id = $_GET['id'];
+		$type = $_GET['type'];
+		$table;
+		if ($type == 'L') {
+			$titleName = $locations->get($id)->getName();
+			$type_php = 'placeSingle.php';
+        	$sql =<<<SQL
+SELECT id, user_id, location_id, replyTo, isPending, UNIX_TIMESTAMP(created_at), deleted, comment from mbira_location_comments
+where location_id=?
+SQL;
+		} else if ($type == 'A') {
+			$titleName = $areas->get($id)->getName();
+			$type_php = 'placeSingle.php';
+        	$sql =<<<SQL
+SELECT id, user_id, area_id, replyTo, isPending, UNIX_TIMESTAMP(created_at), deleted, comment from mbira_area_comments
+where area_id=?
+SQL;
+		}
+        $pdo = new PDO("mysql:dbname=$dbname;host=$dbhost;charset=utf8", $dbuser, $dbpass);
+        $statement = $pdo->prepare($sql);
+        $statement->execute(array($id));
+        if($statement->rowCount() === 0) {
+        }
+		$comments = array();
+        $sql2 =<<<SQL
+SELECT firstName, lastName, email, id, username from mbira_users
+SQL;
+		$statement2 = $pdo->prepare($sql2);
+        $statement2->execute();
+		$userData = $statement2->fetchAll();
+		function checkIfHasReply($i, $idToCheck, $data) {
+			global $comments;
+		    for ($j = 0; $j < count($data); $j++) {
+		        if ($idToCheck == $data[$j]['replyTo']) {
+		            $name = idToUser($data[$j]);
+		            $tempObj = array(
+		                "comment_id" => $data[$j]['id'],
+		                "user" => $name,
+		                "date" => $data[$j]['UNIX_TIMESTAMP(created_at)'],
+		                "comment" => $data[$j]['comment'],
+		                "replies" => array() ,
+		                "pending" => $data[$j]['isPending'],
+		                "deleted" => $data[$j]['deleted']
+		            );
+		            array_push($comments[$i]['replies'], $tempObj);
+		        }
+		    }
+		}
+		function idToUser($commentData) {
+			global $userData;
+		    for ($q = 0; $q < count($userData); $q++) {
+		        if ($userData[$q]['id'] === $commentData['user_id']) {
+		            return $userData[$q]['firstName'] . " " . $userData[$q]['lastName'];
+		        }
+		    }
+		}
+		function loadComments($data) {
+			global $comments;
+		    $comments = array();
+		    usort($data, function ($x, $y) {
+		        if ($x['replyTo'] - $y['replyTo'] === 0) {
+		            return $y['UNIX_TIMESTAMP(created_at)'] - $x['UNIX_TIMESTAMP(created_at)'];
+		        }
+		        else {
+		            return $y['replyTo'] - $x['replyTo'];
+		        }
+		    });
+		    for ($i = 0; $i < count($data); $i++) {
+		        if ($data[$i]['replyTo'] == 0 || $data[$i]['replyTo'] == null) {
+		            $name = idToUser($data[$i]);
+		            $tempObj = array(
+		                "comment_id" => $data[$i]['id'],
+		                "user" => $name,
+		                "date" => $data[$i]['UNIX_TIMESTAMP(created_at)'],
+		                "comment" => $data[$i]['comment'],
+		                "replies" => array() ,
+		                "pending" => $data[$i]['isPending'],
+		                "deleted" => $data[$i]['deleted']
+		            );
+		            array_push($comments, $tempObj);
+		        }
+		    }
+		    for ($i = 0; $i < count($comments); $i++) {
+		        checkIfHasReply($i, $comments[$i]['comment_id'], $data);
+		    }
+		}
+		$data = $statement->fetchAll();
+		loadComments($data);
+	}else {
+		header('Location: ./index.php'); 		///< go to homepage if the id is unknown
+	}
+    
+?>
+
+
+
 <div class="placeSingleSubTitle"><h4>Conversations</h4></div>
 <section id='conversations'>
-	<div class="conversationCard">
-		<div class="userDate">
-			<p class="userName">User Name</p>
-			<div class="tooltip"><span class="tooltiptext">Citizen Expert</span><img src="assets/svgs/citizenExpert.svg" /></div>
-			<div class="tooltip"><span class="tooltiptext">Project Expert</span><img src="assets/svgs/projectExpert.svg"/></div>
-			<div class="tooltip"><span class="tooltiptext">Project Person</span><img src="assets/svgs/projectPerson.svg"/></div>
-			<p class="date">7.15.16</p></div>
-		<div class="conversationPreview">
-		<p>From which we spring. Venture from which we spring Vangelis Orion's sword, prime number Tunguska event not a sunrise but a galaxyrise galaxies? Preserve and cherish that pale blue dot as a patch of light. Shores of the cosmic ocean, colonies? Globular star cluster venture cosmic fugue corpus callosum, great turbulent clouds, birth rich in heavy atoms white dwarf, extraplanetary made in the interiors of collapsing stars, star stuff harvesting star light, stirred by starlight?</p></div>
-		<div class="viewConversation">
-			<p>3 Particpants</p>
-			<a href="placeSingle-Conversation.php">VIEW CONVERSATION <img src="assets/svgs/arrowBlue.svg"/></a>
-	</div></div>
 
-	<div class="conversationCard">
-		<div class="userDate">
-			<p class="userName">User Name</p>
-			<div class="tooltip"><span class="tooltiptext">Citizen Expert</span><img src="assets/svgs/citizenExpert.svg" /></div>
-			<div class="tooltip"><span class="tooltiptext">Project Expert</span><img src="assets/svgs/projectExpert.svg"/></div>
-			<div class="tooltip"><span class="tooltiptext">Project Person</span><img src="assets/svgs/projectPerson.svg"/></div>
-			<p class="date">7.15.16</p></div>
-		<div class="conversationPreview">
-		<p>From which we spring. Venture from which we spring Vangelis Orion's sword, prime number Tunguska event not a sunrise but a galaxyrise galaxies? Preserve and cherish that pale blue dot as a patch of light. Shores of the cosmic ocean, colonies? Globular star cluster venture cosmic fugue corpus callosum, great turbulent clouds, birth rich in heavy atoms white dwarf, extraplanetary made in the interiors of collapsing stars, star stuff harvesting star light, stirred by starlight?</p></div>
-		<div class="viewConversation">
-			<p>3 Particpants</p>
-			<a href="placeSingle-Conversation.php">VIEW CONVERSATION <img src="assets/svgs/arrowBlue.svg"/></a>
-	</div></div>
+    <?php for ($i=0; $i < count($comments); $i++) { 
+        if ($comments[$i]['pending'] != 'yes') {
+        ?>
+    
+        <div class="conversationCard">
+            <div class="userDate">
+                <p class="userName"><?php echo $user->getEmail(); ?></p>
+                <div class="tooltip"><span class="tooltiptext">Citizen Expert</span><img src="assets/svgs/citizenExpert.svg" /></div>
+                <div class="tooltip"><span class="tooltiptext">Project Expert</span><img src="assets/svgs/projectExpert.svg"/></div>
+                <div class="tooltip"><span class="tooltiptext">Project Person</span><img src="assets/svgs/projectPerson.svg"/></div>
+                <p class="date"><?php echo date("m.d.y", $comments[$i]['date']);?></p>
+            </div>
 
-	<div class="conversationCard">
-		<div class="userDate">
-			<p class="userName">User Name</p>
-			<div class="tooltip"><span class="tooltiptext">Citizen Expert</span><img src="assets/svgs/citizenExpert.svg" /></div>
-			<div class="tooltip"><span class="tooltiptext">Project Expert</span><img src="assets/svgs/projectExpert.svg"/></div>
-			<div class="tooltip"><span class="tooltiptext">Project Person</span><img src="assets/svgs/projectPerson.svg"/></div>
-			<p class="date">7.15.16</p></div>
-		<div class="conversationPreview">
-		<p>From which we spring. Venture from which we spring Vangelis Orion's sword, prime number Tunguska event not a sunrise but a galaxyrise galaxies? Preserve and cherish that pale blue dot as a patch of light. Shores of the cosmic ocean, colonies? Globular star cluster venture cosmic fugue corpus callosum, great turbulent clouds, birth rich in heavy atoms white dwarf, extraplanetary made in the interiors of collapsing stars, star stuff harvesting star light, stirred by starlight?</p></div>
-		<div class="viewConversation">
-			<p>3 Particpants</p>
-			<a href="placeSingle-Conversation.php">VIEW CONVERSATION <img src="assets/svgs/arrowBlue.svg"/></a>
-	</div></div>
+            <div class="conversationPreview">
+                <p>
+                    <?php echo $comments[$i]['comment'] ?>
+                </p>
+            </div>
 
-	<div class="conversationCard">
+            <div class="viewConversation">
+                <p>3 Particpants</p>
+                <a href="placeSingle-Conversation.php">VIEW CONVERSATION <img src="assets/svgs/arrowBlue.svg"/></a>
+            </div>
+        </div>
+    
+    <?php
+        } 
+    }?> 
+    
+    <?php
+        if(count($comments) == 0) {
+            echo "No Comments Yet.";
+        }
+    ?>
+    
+    <!--	<div class="conversationCard">
 		<div class="userDate">
 			<p class="userName">User Name</p>
 			<div class="tooltip"><span class="tooltiptext">Citizen Expert</span><img src="assets/svgs/citizenExpert.svg" /></div>
@@ -341,21 +442,7 @@ Conversations
 		<div class="viewConversation">
 			<p>3 Particpants</p>
 			<a href="placeSingle-Conversation.php">VIEW CONVERSATION <img src="assets/svgs/arrowBlue.svg"/></a>
-	</div></div>
-
-	<div class="conversationCard">
-		<div class="userDate">
-			<p class="userName">User Name</p>
-			<div class="tooltip"><span class="tooltiptext">Citizen Expert</span><img src="assets/svgs/citizenExpert.svg" /></div>
-			<div class="tooltip"><span class="tooltiptext">Project Expert</span><img src="assets/svgs/projectExpert.svg"/></div>
-			<div class="tooltip"><span class="tooltiptext">Project Person</span><img src="assets/svgs/projectPerson.svg"/></div>
-			<p class="date">7.15.16</p></div>
-		<div class="conversationPreview">
-		<p>From which we spring. Venture from which we spring Vangelis Orion's sword, prime number Tunguska event not a sunrise but a galaxyrise galaxies? Preserve and cherish that pale blue dot as a patch of light. Shores of the cosmic ocean, colonies? Globular star cluster venture cosmic fugue corpus callosum, great turbulent clouds, birth rich in heavy atoms white dwarf, extraplanetary made in the interiors of collapsing stars, star stuff harvesting star light, stirred by starlight?</p></div>
-		<div class="viewConversation">
-			<p>3 Particpants</p>
-			<a href="placeSingle-Conversation.php">VIEW CONVERSATION <img src="assets/svgs/arrowBlue.svg"/></a>
-	</div></div>
+	</div></div>-->
 </section>
 
 <a href="#" class="bottomButton openModalStartConversation">Start Conversation</a>
