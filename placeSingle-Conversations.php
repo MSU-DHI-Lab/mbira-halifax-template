@@ -448,18 +448,17 @@ SQL;
 
 <a href="" class="bottomButton openModalStartConversation">Start Conversation</a>
 
-
-                
 <!--===============================
 Modals Include
 ================================-->
 <?php
-	include('includes/modalStartConversation.php');
+    if(isset($_SESSION['user'])){   
+	   include('includes/modalStartConversation.php');
+    }
     include('includes/modalLogInPrompt.php');   
 ?>
 
-
-<?php if(!isset($_SESSION['user'])){ ?>
+<?php if(!isset($_SESSION['user'])){?>
 <script> 
 $('.openModalStartConversation').click(function() {
 	$('#modalLogInPrompt').addClass('displayModal');
@@ -481,8 +480,8 @@ $('.openModalStartConversation').click(function() {
 	$('body').addClass('modal-open');
 	return false;
 });
-$('#modal-x-btn').click(function() {
-	$('#modal').removeClass('displayModal');
+$('.closeModalStartConversation').click(function() {
+	$('#modalStartConversation').removeClass('displayModal');
 	$('body').removeClass('modal-open');
 });
 </script>

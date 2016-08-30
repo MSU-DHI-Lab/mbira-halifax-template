@@ -406,9 +406,40 @@ SQL;
 Modals Include
 ================================-->
 <?php
-	include('includes/modalParticipateInConversation.php');
+    if(isset($_SESSION['user'])){   
+	   include('includes/modalParticipateInConversation.php');
+    }
 	include('includes/modalLogInPrompt.php');
 ?>
+
+<?php if(!isset($_SESSION['user'])){ ?>
+<script> 
+$('.openModalParticipateInConversation').click(function() {
+	$('#modalLogInPrompt').addClass('displayModal');
+	$('body').addClass('modal-open');
+	return false;
+});
+$('.closeModalLogInPrompt').click(function() {
+	$('#modalLogInPrompt').removeClass('displayModal');
+	$('body').removeClass('modal-open');
+});
+</script>
+<?php } ?>
+
+
+<?php if(isset($_SESSION['user'])){ ?>
+<script>
+$('.openModalParticipateInConversation').click(function() {
+	$('.modalParticipateInConversation').addClass('displayModal');
+	$('body').addClass('modal-open');
+	return false;
+});
+$('.closeModalParticipateInConversation').click(function() {
+	$('.modalParticipateInConversation').removeClass('displayModal');
+	$('body').removeClass('modal-open');
+});
+</script>
+<?php } ?>
 
 <!--===============================
 Scripts & Footer

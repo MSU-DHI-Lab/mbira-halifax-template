@@ -54,7 +54,6 @@ $('.closeModalMedia').click(function() {
 });
 
 
-
 /*$('.openModalStartConversation').click(function() {
 	$('#modalLogInPrompt').addClass('displayModal');
 	$('body').addClass('modal-open');
