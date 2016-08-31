@@ -395,6 +395,17 @@ SQL;
 <div class="placeSingleSubTitle"><h4>Conversations</h4></div>
 <section id='conversations'>
 
+    
+    <?php 
+/*    $replies_ct = 0;
+    for ($j=0; $j < count($comments[0]['replies']); $j++) {
+        if ($comments[0]['replies'][$i]['pending'] != 'yes') {
+            $replies_ct++;
+        }
+    }*/
+    ?>
+    
+    
     <?php for ($i=0; $i < count($comments); $i++) { 
         if ($comments[$i]['pending'] != 'yes') {
         ?>
@@ -415,7 +426,16 @@ SQL;
             </div>
 
             <div class="viewConversation">
-                <p><?php echo count($comments[$i]['replies'])?> Particpants</p>
+                <?php
+                    $replies_ct = 0;
+                    for ($j=0; $j < count($comments[$i]['replies']); $j++) {
+                        if ($comments[$i]['replies'][$j]['pending'] != 'yes') {
+                            $replies_ct++;
+                        }
+                    }
+                ?>
+                
+                <p><?php echo $replies_ct/*count($comments[$i]['replies'])*/?> Particpants</p>
                 <a href="placeSingle-Conversation.php?id=<?php echo $_GET['id']?>&type=<?php echo $_GET['type']?>&convo=<?php echo $comments[$i]['comment_id']; ?>">VIEW CONVERSATION <img src="assets/svgs/arrowBlue.svg"/></a>
             </div>
         </div>

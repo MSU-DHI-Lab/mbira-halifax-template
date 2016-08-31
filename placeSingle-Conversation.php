@@ -384,6 +384,8 @@ SQL;
 
 <section id='conversations'>
     <?php for ($i=0; $i < count($comments[0]['replies']); $i++) {  ?>
+    <?php if ($comments[0]['replies'][$i]['pending'] != 'yes') {
+        ?>
         <div class="conversationCard">
             <div class="userDate">
                 <p class="userName"><?php echo $comments[0]['replies'][$i]['user'] ?></p>
@@ -397,7 +399,8 @@ SQL;
                 <p><?php echo $comments[0]['replies'][$i]['comment']; ?></p>
             </div>
         </div>
-    <?php } ?>
+    <?php }
+    } ?>
 </section>
 
 <a href="#" class="bottomButton openModalParticipateInConversation">Participate in Conversation</a>

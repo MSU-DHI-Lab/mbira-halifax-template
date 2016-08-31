@@ -24,11 +24,11 @@
 				</div>
 			</div>
             <?php if($pgType == 'plc') { ?>
-    			<a href="placeSingle-Conversation.php?id=<?php $_GET['id']?>&type=<?php echo $_GET['type']?>" onclick="this.parentNode.submit(); return false;" class="modalBottomButton">SIGN IN</a>
+    			<a href="placeSingle-Conversation.php?id=<?php echo $_GET['id']?>&type=<?php echo $_GET['type']?>" onclick="this.parentNode.submit(); return false;" class="modalBottomButton">SIGN IN</a>
             <?php } ?>
             
             <?php if($pgType == 'exp') { ?>
-    			<a href="placeSingle-Conversation.php?id=<?php $_GET['id']?>" onclick="this.parentNode.submit(); return false;" class="modalBottomButton">SIGN IN</a>
+    			<a href="explorationSingle-Conversation.php?id=<?php echo $_GET['id']?>" onclick="this.parentNode.submit(); return false;" class="modalBottomButton">SIGN IN</a>
             <?php } ?>
 		</form>
 	</div>
