@@ -17,7 +17,9 @@
 				<input type="hidden" name="convo_id" value="<?php echo $convo ?>">
 				<input type="hidden" name="user" value="<?php echo $user->getId() ?>">
 				<input type="hidden" name="id" value="<?php echo $id ?>">
-				<input type="hidden" name="type" value="<?php echo $type ?>">
+                <?php if($pgType == "plc") { ?>
+				    <input type="hidden" name="type" value="<?php echo $type ?>">
+                <?php } ?>
 				<a href="conversation-comment-post.php" onclick="this.parentNode.submit(); return false;" class="modalBottomButton">ADD REPLY</a>
 			</form>
 		</div>

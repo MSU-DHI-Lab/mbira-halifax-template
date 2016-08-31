@@ -406,6 +406,7 @@ SQL;
 Modals Include
 ================================-->
 <?php
+    $pgType = 'plc';
     if(isset($_SESSION['user'])){   
 	   include('includes/modalParticipateInConversation.php');
     }

@@ -452,10 +452,13 @@ SQL;
 Modals Include
 ================================-->
 <?php
-    if(isset($_SESSION['user'])){   
-	   include('includes/modalStartConversation.php');
+    $pgType = 'plc';
+    if(isset($_SESSION['user'])){  
+	    include('includes/modalStartConversation.php');
     }
-    include('includes/modalLogInPrompt.php');   
+    else{
+        include('includes/modalLogInPrompt.php'); 
+    }
 ?>
 
 <?php if(!isset($_SESSION['user'])){?>

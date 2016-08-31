@@ -57,7 +57,7 @@ Exploration Nav & About
 				<p class="placeNavItemTitle">START EXPLORATION</p>
 			</div>
 		</a>
-		<a href="explorationSingle-Conversations.php">
+		<a href="explorationSingle-Conversations.php?id=<?php echo $_GET['id']; ?>">
 			<div class="placeNavItem">
 			<img src="assets/svgs/conversations.svg"/>
 				<p class="placeNavItemTitle">VIEW CONVERSATIONS</p>

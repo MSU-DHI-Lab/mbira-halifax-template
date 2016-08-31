@@ -1,4 +1,10 @@
-<div id='modalLogInPrompt' class='modal'>
+<?php if($pgType == 'plc') { ?>
+    <div id='modalLogInPrompt' class='modal'>
+<?php } ?>
+        
+<?php if($pgType == 'exp') { ?>
+    <div id='modalLogInExpPrompt' class='modal'>
+<?php } ?>
 	<div>
 		<div class="modalHeader">
 			<div class="modalTitle">You need to sign in first...</div>
@@ -17,7 +23,13 @@
 					<a href="#" class="rightLink" id="forgotPasswordLink">Forgot Password?</a>
 				</div>
 			</div>
-			<a href="placeSingle-Conversation.php?id=<?php $_GET['id']?>&type=<?php echo $_GET['type']?>&convo=<?php echo $_GET['convo']?>" onclick="this.parentNode.submit(); return false;" class="modalBottomButton">SIGN IN</a>
+            <?php if($pgType == 'plc') { ?>
+    			<a href="placeSingle-Conversation.php?id=<?php $_GET['id']?>&type=<?php echo $_GET['type']?>" onclick="this.parentNode.submit(); return false;" class="modalBottomButton">SIGN IN</a>
+            <?php } ?>
+            
+            <?php if($pgType == 'exp') { ?>
+    			<a href="placeSingle-Conversation.php?id=<?php $_GET['id']?>" onclick="this.parentNode.submit(); return false;" class="modalBottomButton">SIGN IN</a>
+            <?php } ?>
 		</form>
 	</div>
 </div>
