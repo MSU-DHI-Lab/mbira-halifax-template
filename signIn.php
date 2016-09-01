@@ -39,7 +39,7 @@ Sign In Title
 <?php if(!isset($_SESSION['user'])) { ?>
 <section id='main' class="signInUp">
 	<h2 class="signInUp">Sign In</h2>
-</section>
+</section>    
 <!--===============================
 Sign In Form & Submit
 ================================-->
@@ -51,10 +51,41 @@ Sign In Form & Submit
 			 <label for="password">Password</label>
 			 <input class="loginField" type="password" name="password" placeholder="PASSWORD"><br>
 			 <input class="Submit" type="submit" value="LOGIN"><br>
-			 <a href="#WillBringUpAModal" class="forgotPassword">FORGOT PASSWORD?</a>
+			 <a href="" class="forgotPassword">FORGOT PASSWORD?</a>
 			 <a href="signUp.php" class="signUpButton">SIGN UP?</a>
-
+    </form>
+    <!--</form>-->
 </section>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<?php 
+$pgType = "";                                     
+include('includes/modalForgotPassword.php'); 
+?>
+
+<script>
+$('.forgotPassword').click(function() {
+	$('#modalForgotPasswordPrompt').addClass('displayModal');
+	$('body').addClass('modal-open');
+	return false;
+});
+$('.closeModalPwdPrompt').click(function() {
+	$('#modalForgotPasswordPrompt').removeClass('displayModal');
+	$('body').removeClass('modal-open');
+});
+</script>
+
+    
+    
+    
+    
 <?php  } ?>
 <!--===============================
 Scripts & Footer

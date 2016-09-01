@@ -1121,6 +1121,25 @@ input:focus {
     margin: 0 auto;
     margin-bottom: 30px;
 }
+
+#forgotPasswordPrompt input {
+	width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0 0 20px 0;
+  line-height: 1;
+  padding: 0;
+  transition: all .5s ease;
+  color: #FFF;
+  font-size: 12px;
+  text-align: left;
+  overflow: scroll;
+  margin: 0 0 45px 0;
+}
+#forgotPasswordPrompt input:last-child {
+	/*margin: 0 0 100px 0;*/
+}
 @media screen and (max-width: 768px) {
     .loginField {
         width: 75%;
@@ -1261,8 +1280,22 @@ h2.searchResults {
     overflow-x: hidden;
     text-align: center;
 }
-
+.modalContentForgot {
+    box-sizing: border-box;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 40px;
+    margin: 120px 0 0 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    text-align: center;
+}
 .modalContent textarea {
+	line-height: 2;
+}
+
+.modalContentForgot textarea {
 	line-height: 2;
 }
 
@@ -1276,7 +1309,9 @@ h2.searchResults {
 	.modalContent {
 		margin-top: 150px;
 	}
-	
+	.modalContentForgot {
+		margin-top: 150px;
+	}
 	.modalTitle {
 		width: 55%;
 	}
@@ -1398,7 +1433,9 @@ textarea {
 .modalContent {
 	height: 230px;
 }
-
+.modalContentForgot {
+	height: 230px;
+}
 #loginPrompt input {
 	width: 100%;
   background: none;
@@ -1438,6 +1475,9 @@ textarea {
 		margin-top: 0;
 	}
 	.modalContent {
+		height: 270px;
+	}
+    .modalContentForgot {
 		height: 270px;
 	}
 }
