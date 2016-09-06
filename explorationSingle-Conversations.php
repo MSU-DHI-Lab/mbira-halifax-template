@@ -228,6 +228,19 @@ SQL;
 Modals Include
 ================================-->
 <?php
+        
+    $params = "";
+    $redirectLocation = "";
+    if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {
+             $params = "&s=".$step."&t=".$total."&expid=".$expid; 
+    } 
+
+    /*$redirectLocation = "placeSingle-Conversations.php?id=".$_GET['id']."&type=".$_GET['type'].$params;*/
+
+    /*$redirectLocation = $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];*/
+    $redirectLocation = $_SERVER['REQUEST_URI'];
+    
+    
     $pgType = 'exp';
     if(isset($_SESSION['user'])){
         include('includes/modalStartConversation.php');
