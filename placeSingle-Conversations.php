@@ -450,20 +450,6 @@ SQL;
             echo "No Comments Yet.";
         }
     ?>
-    
-    <!--	<div class="conversationCard">
-		<div class="userDate">
-			<p class="userName">User Name</p>
-			<div class="tooltip"><span class="tooltiptext">Citizen Expert</span><img src="assets/svgs/citizenExpert.svg" /></div>
-			<div class="tooltip"><span class="tooltiptext">Project Expert</span><img src="assets/svgs/projectExpert.svg"/></div>
-			<div class="tooltip"><span class="tooltiptext">Project Person</span><img src="assets/svgs/projectPerson.svg"/></div>
-			<p class="date">7.15.16</p></div>
-		<div class="conversationPreview">
-		<p>From which we spring. Venture from which we spring Vangelis Orion's sword, prime number Tunguska event not a sunrise but a galaxyrise galaxies? Preserve and cherish that pale blue dot as a patch of light. Shores of the cosmic ocean, colonies? Globular star cluster venture cosmic fugue corpus callosum, great turbulent clouds, birth rich in heavy atoms white dwarf, extraplanetary made in the interiors of collapsing stars, star stuff harvesting star light, stirred by starlight?</p></div>
-		<div class="viewConversation">
-			<p>3 Particpants</p>
-			<a href="placeSingle-Conversation.php">VIEW CONVERSATION <img src="assets/svgs/arrowBlue.svg"/></a>
-	</div></div>-->
 </section>
 
 <a href="" class="bottomButton openModalStartConversation">Start Conversation</a>
@@ -471,17 +457,33 @@ SQL;
 <!--===============================
 Modals Include
 ================================-->
+
+
+<?php
+$params = "";
+$redirectLocation = "";
+if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {
+         $params = "&s=".$step."&t=".$total."&expid=".$expid; 
+} 
+
+/*$redirectLocation = "placeSingle-Conversations.php?id=".$_GET['id']."&type=".$_GET['type'].$params;*/
+
+/*$redirectLocation = $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];*/
+$redirectLocation = $_SERVER['REQUEST_URI'];
+?>
+
 <?php
     $pgType = 'plc';
-    if(isset($_SESSION['user'])){  
+
+    if(isset($_SESSION['user'])){ 
 	    include('includes/modalStartConversation.php');
     }
     else{
-        include('includes/modalLogInPrompt.php'); 
+        include('includes/modalLogInPrompt.php');
     }
 ?>
 
-<?php if(!isset($_SESSION['user'])){?>
+<?php if(!isset($_SESSION['user'])){ ?>
 <script> 
 $('.openModalStartConversation').click(function() {
 	$('#modalLogInPrompt').addClass('displayModal');
@@ -490,6 +492,16 @@ $('.openModalStartConversation').click(function() {
 });
 $('.closeModalLogInPrompt').click(function() {
 	$('#modalLogInPrompt').removeClass('displayModal');
+	$('body').removeClass('modal-open');
+});
+    
+$('.forgotPassword').click(function() {
+	$('#modalForgotPasswordPrompt').addClass('displayModal');
+	$('body').addClass('modal-open');
+	return false;
+});
+$('.closeModalPwdPrompt').click(function() {
+	$('#modalForgotPasswordPrompt').removeClass('displayModal');
 	$('body').removeClass('modal-open');
 });
 </script>
@@ -509,7 +521,7 @@ $('.closeModalStartConversation').click(function() {
 });
 </script>
 <?php } ?>
-
+                           
 
 <!--===============================
 Scripts & Footer

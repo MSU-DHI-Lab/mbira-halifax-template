@@ -20,8 +20,9 @@
 				</div>
 				<div class="rightLinkCont">
 					<input type="password" name="password" placeholder="Your Password">
-					<a href="#" class="rightLink" id="forgotPasswordLink">Forgot Password?</a>
+					<a href="#" class="rightLink forgotPassword" id="forgotPasswordLink">Forgot Password?</a>
 				</div>
+                <input type="hidden" name="page" value="<?php echo $redirectLocation; ?>">
 			</div>
             <?php if($pgType == 'plc') { ?>
     			<a href="placeSingle-Conversation.php?id=<?php echo $_GET['id']?>&type=<?php echo $_GET['type']?>" onclick="this.parentNode.submit(); return false;" class="modalBottomButton">SIGN IN</a>
@@ -33,3 +34,20 @@
 		</form>
 	</div>
 </div>
+        
+<?php
+$pgType = "";                                     
+include('includes/modalForgotPassword.php'); 
+?>
+
+<script>
+$('.forgotPassword').click(function() {
+	$('#modalForgotPasswordPrompt').addClass('displayModal');
+	$('body').addClass('modal-open');
+	return false;
+});
+$('.closeModalPwdPrompt').click(function() {
+	$('#modalForgotPasswordPrompt').removeClass('displayModal');
+	$('body').removeClass('modal-open');
+});
+</script>

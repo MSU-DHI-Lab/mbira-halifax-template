@@ -43,6 +43,10 @@ Sign In Title
 <!--===============================
 Sign In Form & Submit
 ================================-->
+<?php 
+$redirectLocation = $_SERVER['REQUEST_URI'];
+?>
+    
 <section id='signInUp' class="main">
 	<!--<form class="signInUpForm" name="login" action="loggedIn.php" method="post" accept-charset="utf-8">-->
     <form class="signInUpForm" name="login" action="login-post.php" method="post" accept-charset="utf-8">
@@ -51,6 +55,7 @@ Sign In Form & Submit
 			 <label for="password">Password</label>
 			 <input class="loginField" type="password" name="password" placeholder="PASSWORD"><br>
 			 <input class="Submit" type="submit" value="LOGIN"><br>
+             <input type="hidden" name="page" value="signIn.php">
 			 <a href="" class="forgotPassword">FORGOT PASSWORD?</a>
 			 <a href="signUp.php" class="signUpButton">SIGN UP?</a>
     </form>
@@ -66,6 +71,7 @@ Sign In Form & Submit
     
     
 <?php 
+$redirectLocation = $_SERVER['REQUEST_URI'];
 $pgType = "";                                     
 include('includes/modalForgotPassword.php'); 
 ?>
