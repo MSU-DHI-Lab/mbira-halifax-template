@@ -71,6 +71,7 @@ Exhibit Nav & About
 <!--===============================
 Exhibits Connected Places
 ================================-->
+<?php if((count($location_ids) + count($area_ids)) > 0) { ?>
 <section id='collections' class="main">
 	<div class="collectionTitle"><h4>Connected Places</h4></div>
 	<div id='collections-layout' class='collections-grid'>
@@ -116,7 +117,7 @@ Exhibits Connected Places
         ?>
 	</div>
 </section>
-
+<?php } ?>
 <!--===============================
 Scripts & Footer
 ================================-->
