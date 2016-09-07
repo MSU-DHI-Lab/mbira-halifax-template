@@ -42,22 +42,13 @@
 <!--===============================
 Landing Image
 ================================-->
-<div id='landing' class="placeSub" style="background: url('<?php 
-    if($placeType == "L") {
-        echo $source.$location->getHeaderPath();
-    }
-    else if($placeType == "A") {
-        echo $source.$area->getHeaderPath();
-    }
-    ?>') center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    position: absolute;
-    overflow: hidden;
-    width: 100%;">
+<div id='landing' class="placeSub">
     <div id='landing-overlay-blend' class="placeSub"></div>
 </div>
+
+<script>
+$('header').css("background", "#082237");
+</script>
 
 <!--===============================
 Place on Exploration Controls (Only active when user has selected "start Exploration")
@@ -189,7 +180,23 @@ if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {
 <!--===============================
 Place NavBar
 ================================-->
-<div class="placeNavBar">
+<div class="placeNavBar" style="background: linear-gradient(
+      rgba(10,38,61,.8),
+      rgba(10,38,61,.8)
+    ), url('<?php 
+    if($placeType == "L") {
+        echo $source.$location->getHeaderPath();
+    }
+    else if($placeType == "A") {
+        echo $source.$area->getHeaderPath();
+    }
+    ?>') center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: fixed;
+    overflow: hidden;
+    width: 100%;">
 	<?php if($placeType == "L") { ?>
 		<a class="back" href="placeSingle.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>"><img class="backArrow" src="assets/svgs/arrow.svg"/><p class="backTitle"><?php echo $location->getName();?></p></a>
 	<?php } ?>
@@ -200,7 +207,7 @@ Place NavBar
 	
 	<div class="right">
 
-    <a class="active" href="placeSingle-Map.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Map</a>
+    <a href="placeSingle-Map.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Map</a>
         
         
         
@@ -263,7 +270,7 @@ Place NavBar
         {
             if($val == "true"){        
                 ?>
-                <a href="placeSingle-DigDeeper.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Dig Deeper</a>
+                <a class="active" href="placeSingle-DigDeeper.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Dig Deeper</a>
                 <?php
                             break;
                         }
@@ -274,7 +281,7 @@ Place NavBar
         {
             if($val == "true"){        
             ?>
-            <a href="placeSingle-DigDeeper.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Dig Deeper</a>
+            <a class="active" href="placeSingle-DigDeeper.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Dig Deeper</a>
             <?php
                         break;
                     }
@@ -284,10 +291,14 @@ Place NavBar
     </div>
 </div>
 
+
 <!--===============================
 Dip Deeper
 ================================-->
 <div class="placeSingleSubTitle"><h4>Dig Deeper</h4></div>
+<script>
+$('.placeSingleSubTitle').css('position','relative');
+</script>
 <section id='digDeeper'>
 	<p>
         <?php 

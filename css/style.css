@@ -803,7 +803,7 @@ through a media query only recognized in IE */
     z-index: 9;
     top:120px;
     width:100%;
-    position: relative;
+    position: fixed;
 }
 .placeSingleSubTitle h4 {
     color: #fff;
@@ -867,7 +867,7 @@ through a media query only recognized in IE */
 /*========================= Conversations =========================*/
 #conversations {
   position: relative;
-  top: 120px;
+  top: 200px;
   margin-bottom: 120px;
   background: #0A263D;
   color: #fff;

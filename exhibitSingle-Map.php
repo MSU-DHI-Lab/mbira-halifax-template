@@ -30,9 +30,11 @@
 	include('includes/header.php');
 ?>
 
+<!--
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
 <link rel="stylesheet" href="js/MarkerCluster.css" />
 <link rel="stylesheet" href="js/MarkerCluster.Default.css" />
+-->
 
 <!--===============================
 Place NavBar
@@ -55,10 +57,17 @@ Map
 
 <div class='findMyLocation'></div>
 
-<script src="js/leaflet/leaflet.js"></script>
-<script src="js/leaflet.markercluster-src.js"></script>
+<!--<script src="js/leaflet/leaflet.js"></script>
+<script src="js/leaflet.markercluster-src.js"></script>-->
 
 
+	<link rel="stylesheet" href="js/leaflet/leaflet.css" />
+	<script src="js/leaflet/leaflet.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="js/leaflet/MarkerCluster.css" />
+	<link rel="stylesheet" href="js/leaflet/MarkerCluster.Default.css" />
+	<script src="js/leaflet/leaflet.markercluster-src.js"></script>
 
 <script>
 	var mymap = L.map('mapid').setView([37.7895, -99.3325], 4);
@@ -92,11 +101,7 @@ Map
 		
 </script>
 
-
-
-
-
- <?php for ($x = 0; $x < count($loc_ids); $x++) { ?>
+<?php for ($x = 0; $x < count($loc_ids); $x++) { ?>
 	<?php $loc = $locations->get($loc_ids[$x]); ?>
 	
 	<script>
@@ -111,33 +116,38 @@ Map
 			.bindPopup("<h2><?php echo $loc->getName();?></h2><br /><p><?php echo $loc->getDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $loc->getID();?>'>VIEW LOCATION</a>");
 	markerClusters.addLayer(m);
     pointsArry.push(m);
+    
+        
 	</script>
- <?php } ?>
+<?php } ?>
 
 <script>
-    var coords = <?php echo $area->getCoordinates(); ?>;
+    
+    mymap.addLayer(markerClusters);
+    
+    <?php if($area != null) { ?>
+        var coords = <?php echo $area->getCoordinates(); ?>;
 
-    var pointsArry = Array();
-    var coords = <?php echo $area->getCoordinates(); ?>;
-    for(x=0; x<coords.length; x++)
-    {	
-        m = L.marker([coords[x]["lat"], coords[x]["lng"]]);
-        pointsArry.push(m);
-    }
+        var pointsArry = Array();
+        var coords = <?php echo $area->getCoordinates(); ?>;
+        for(x=0; x<coords.length; x++)
+        {	
+            m = L.marker([coords[x]["lat"], coords[x]["lng"]]);
+            pointsArry.push(m);
+        }
+
+        var area  = L.polygon(coords, {
+            color: '#3EB9FD',
+            fillColor: '#3EB9FD',
+            fillOpacity: 0.6
+            }).addTo(mymap).bindPopup("<h2><?php echo $area->getName()?></h2><br /><p><?php echo $area->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $area->getID();?>'>VIEW AREA</a>");
+
+        pointsArry.push(L.marker([area.getBounds().getCenter().lat, area.getBounds().getCenter().lng], {icon: iconCircle}));
+        var group = new L.featureGroup(pointsArry);
+    <?php } ?>
     
     
-  var area  = L.polygon(coords, {
-    color: '#3EB9FD',
-    fillColor: '#3EB9FD',
-    fillOpacity: 0.6
-  }).addTo(mymap).bindPopup("<h2><?php echo $area->getName()?></h2><br /><p><?php echo $area->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $area->getID();?>'>VIEW AREA</a>");
-
-    pointsArry.push(L.marker([area.getBounds().getCenter().lat, area.getBounds().getCenter().lng], {icon: iconCircle}));
-    var group = new L.featureGroup(pointsArry);
-</script>
-
-<script>
-	mymap.addLayer(markerClusters);
+    mymap.addLayer(markerClusters);
     mymap.fitBounds(group.getBounds());
 </script>
 
