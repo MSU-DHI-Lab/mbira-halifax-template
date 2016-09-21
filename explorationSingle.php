@@ -77,11 +77,11 @@ Exploration Stops
     <?php        
         for ($x = 0; $x < count($stops); $x++) {
 			
-            $stops[$x] = str_replace("A", "", $stops[$x]);
+            /*$stops[$x] = str_replace("A", "", $stops[$x]);*/
             $stopsArray = array();
             $type = array();
                    
-            if($locations->get($stops[$x]) == null || $areas->get($stops[$x]) == null){ 
+            if($locations->get($stops[$x]) == null || $areas->get(str_replace("A", "", $stops[$x])) == null){ 
             
                 if($locations->get($stops[$x]) != null){
                     $stop = $locations->get($stops[$x]);
@@ -98,8 +98,8 @@ Exploration Stops
                         ';
                 }
 
-                if($areas->get($stops[$x]) != null){
-                    $stop = $areas->get($stops[$x]);
+                if($areas->get(str_replace("A", "", $stops[$x])) != null){
+                    $stop = $areas->get(str_replace("A", "", $stops[$x]));
                         echo '
                             <div class="collection-container">
                                 <div class="collection-image">
@@ -107,14 +107,14 @@ Exploration Stops
                                 </div>
                                 <div class="collection-info">
                                         <h2 class="collection-title">'.$stop->getName().'</h2>
-                                                <a href="placeSingle.php?id='.$stops[$x].'&type=A&s='.($x+1).'&t='.count($stops).'&expid='.$_GET['id'].'" class="collection-link">View Project</a>
+                                                <a href="placeSingle.php?id='.str_replace("A", "", $stops[$x]).'&type=A&s='.($x+1).'&t='.count($stops).'&expid='.$_GET['id'].'" class="collection-link">View Project</a>
                                 </div>
                             </div>
                         ';
                 }
             }
             
-            if($locations->get($stops[$x]) != null && $areas->get($stops[$x]) != null){ 
+            if($locations->get($stops[$x]) != null && $areas->get(str_replace("A", "", $stops[$x])) != null){ 
                 
                 if($locations->get($stops[$x]) != null){
                     $stop = $locations->get($stops[$x]);
@@ -131,8 +131,8 @@ Exploration Stops
                         ';
                 }
 
-                if($areas->get($stops[$x]) != null){
-                    $stop = $areas->get($stops[$x]);
+                if($areas->get(str_replace("A", "", $stops[$x])) != null){
+                    $stop = $areas->get(str_replace("A", "", $stops[$x]));
                         echo '
                             <div class="collection-container">
                                 <div class="collection-image">
@@ -140,7 +140,7 @@ Exploration Stops
                                 </div>
                                 <div class="collection-info">
                                         <h2 class="collection-title">'.$stop->getName().'</h2>
-                                                <a href="placeSingle.php?id='.$stops[$x].'&type=A&s='.($x+1).'&t='.count($stops).'&expid='.$_GET['id'].'" class="collection-link">View Project</a>
+                                                <a href="placeSingle.php?id='.str_replace("A", "", $stops[$x]).'&type=A&s='.($x+1).'&t='.count($stops).'&expid='.$_GET['id'].'" class="collection-link">View Project</a>
                                 </div>
                             </div>
                         ';

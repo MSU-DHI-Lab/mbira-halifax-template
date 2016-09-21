@@ -71,14 +71,18 @@ if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {
 
     for ($x = 0; $x < count($stops); $x++) {
 
-        $stops[$x] = str_replace("A", "", $stops[$x]);
+        /*$stops[$x] = str_replace("A", "", $stops[$x]);*/
 
         if($locations->get($stops[$x]) != null){
             array_push($stopsArry,$stops[$x]);
         }
 
-        if($areas->get($stops[$x]) != null){
+/*        if($areas->get($stops[$x]) != null){
             array_push($stopsArry, $stops[$x]);
+        }*/
+        
+        if($areas->get(str_replace("A", "", $stops[$x])) != null){
+            array_push($stopsArry, str_replace("A", "", $stops[$x]));
         }
     }
 }
@@ -110,14 +114,18 @@ if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {
 
     for ($x = 0; $x < count($stops); $x++) {
 
-        $stops[$x] = str_replace("A", "", $stops[$x]);
+        /*$stops[$x] = str_replace("A", "", $stops[$x]);*/
 
         if($locations->get($stops[$x]) != null){
             array_push($stopsArry,$stops[$x]);
         }
 
-        if($areas->get($stops[$x]) != null){
+/*        if($areas->get($stops[$x]) != null){
             array_push($stopsArry, $stops[$x]);
+        }*/
+        
+        if($areas->get(str_replace("A", "", $stops[$x])) != null){
+            array_push($stopsArry, str_replace("A", "", $stops[$x]));
         }
     }
 ?>
@@ -129,8 +137,7 @@ if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {
         $types = array();
         for ($x = 0; $x < count($stops); $x++) {
 
-            $stops[$x] = str_replace("A", "", $stops[$x]);
-
+            /*$stops[$x] = str_replace("A", "", $stops[$x]);*/
             
             if($locations->get($stops[$x]) == null || $areas->get($stops[$x]) == null){ 
                 if($locations->get($stops[$x]) != null){
@@ -138,8 +145,13 @@ if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {
                     array_push($types, "L");
                 }
 
-                if($areas->get($stops[$x]) != null){
+/*                if($areas->get($stops[$x]) != null){
                     $stop = $areas->get($stops[$x]);
+                    array_push($types, "A");
+                }*/
+                
+                if($areas->get(str_replace("A", "", $stops[$x])) != null){
+                    $stop = $areas->get(str_replace("A", "", $stops[$x]));
                     array_push($types, "A");
                 }
             }
@@ -150,8 +162,8 @@ if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {
                     array_push($types, "L");
                 }
 
-                if($areas->get($stops[$x]) != null){
-                    $stop = $areas->get($stops[$x]);
+                if($areas->get(str_replace("A", "", $stops[$x])) != null){
+                    $stop = $areas->get(str_replace("A", "", $stops[$x]));
                     array_push($types, "A");
                 }
                 $x++;
