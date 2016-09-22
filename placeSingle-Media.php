@@ -202,10 +202,10 @@ if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {
     <p class="stopNumberOfNumber"><?php echo $step; ?> of <?php echo $total; ?></p>
     <a class="nextStop" href="placeSingle-Media.php?id=<?php 
             if($step == $total){
-                echo $stopsArry[0] ;
+                echo $stopsArry[0];
             }
             else{
-                echo $stopsArry[$step] ;
+                echo $stopsArry[$step];
             }
                               ?>&type=<?php 
             if($step == $total){

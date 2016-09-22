@@ -331,7 +331,7 @@ Map
 	var iconCircle = L.icon({
 		iconUrl: 'js/leaflet/images/marker-icon.svg',
 
-			iconSize:     [16, 16], // size of the icon
+			iconSize:     [150, 150], // size of the icon
 			iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
 		popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
 	});
@@ -340,7 +340,7 @@ Map
 
         
     L.marker([<?php echo $location->getLatitude() ?>, <?php echo $location->getLongitude() ?>], {icon: iconCircle}).addTo(mymap)
-	.bindPopup("<?php echo $location->getName()?></h2><br /><p><?php echo $location->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $location->getID();?>'>VIEW LOCATION</a>");
+	.bindPopup("<?php echo $location->getName()?></h2><br /><p><?php echo $location->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $location->getID();?>&type=L'>VIEW LOCATION</a>");
     
     </script>
 <?php } ?>
@@ -360,7 +360,7 @@ Map
 		var iconCircle = L.icon({
 			iconUrl: 'js/leaflet/images/marker-icon.svg',
 
-				iconSize:     [16, 16], // size of the icon
+				iconSize:     [25, 25], // size of the icon
 				iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
 			popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
 		});
@@ -377,7 +377,7 @@ Map
     color: '#3EB9FD',
     fillColor: '#3EB9FD',
     fillOpacity: 0.6
-  }).addTo(mymap).bindPopup("<h2><?php echo $area->getName()?></h2><br /><p><?php echo $area->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $area->getID();?>'>VIEW AREA</a>");
+  }).addTo(mymap).bindPopup("<h2><?php echo $area->getName()?></h2><br /><p><?php echo $area->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $area->getID();?>&type=A'>VIEW AREA</a>");
 
 
         var group = new L.featureGroup(pointsArry);

@@ -89,7 +89,7 @@ Map
 	var iconCircle = L.icon({
 		iconUrl: 'js/leaflet/images/marker-icon.svg',
 
-			iconSize:     [16, 16], // size of the icon
+			iconSize:     [25, 25], // size of the icon
 			iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
 		popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
 	});
@@ -105,6 +105,29 @@ Map
 <?php for ($x = 0; $x < count($loc_ids); $x++) { ?>
 	<?php $loc = $locations->get($loc_ids[$x]); ?>
 	
+
+    <style>
+        .custom-popup .leaflet-popup-content-wrapper{
+          background:
+            linear-gradient(
+              rgba(10,38,61,.8),
+              rgba(10,38,61,.8)
+            ),
+            url('<?php echo $source.$loc->getHeaderPath()?>');
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+          position: relative;
+          overflow: hidden;
+          color:#fff;
+          font-family: 'montserratlight' !important;
+          font-size:16px;
+          line-height:24px;
+          border-radius: 0px !important;
+          box-shadow: 0 11px 14px rgba(0, 0, 0, 0.2) !important;
+        }
+    </style>
+
 	<script>
 	points[0]['features'].push(
 		{"type": "Feature", 
@@ -113,22 +136,36 @@ Map
 		  "geometry":{"type": "Point", "coordinates": [<?php echo $loc->getLatitude();?>, <?php echo $loc->getLongitude();?>]}
 		});
 
-        $(".leaflet-popup-content-wrapper").css("background", "blue");
         
-	m = L.marker([<?php echo $loc->getLatitude() ;?>, <?php echo $loc->getLongitude();?>], {icon: iconCircle}).addTo(mymap)
-			.bindPopup("<h2><?php echo $loc->getName();?></h2><br /><p><?php echo $loc->getDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $loc->getID();?>'>VIEW LOCATION</a>");
-    
+        m = L.marker([<?php echo $loc->getLatitude() ;?>, <?php echo $loc->getLongitude();?>], {icon: iconCircle}).addTo(mymap);
         
-        $(".leaflet-popup-content-wrapper").css("background", "blue");
-        $(document).ready(function(){
-            $(".leaflet-popup-content-wrapper").css("background", "blue");
-            console.log($(".leaflet-popup-content-wrapper").length);
-        });
-        $(".leaflet-popup-content-wrapper").css("background", "blue");
-        console.log("here2");
-
+                
+        var popup = L.popup().setContent("<h2><?php echo $loc->getName();?></h2><br /><p><?php echo $loc->getDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $loc->getID();?>&type=L'>VIEW LOCATION</a>")
         
-	markerClusters.addLayer(m);
+        var Options = {
+            'className' : 'custom<?php echo $loc_ids[$x]?>'
+        }
+                
+        m.bindPopup(popup);
+        
+        m.openPopup();
+        m.closePopup();    
+        
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.background = "linear-gradient(               rgba(10,38,61,.8), rgba(10,38,61,.8)), url('<?php echo $source.$loc->getHeaderPath()?>')";
+        
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundSize = "cover";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundRepeat = "no-repeat";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundPosition = "center center";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.position = "relative";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.overflow = "hidden";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.color = "#fff";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.fontFamily = "'montserratlight' !important";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.fontSize = "16px";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.lineHeight = "24px";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.borderRadius = "0px !important";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.boxShadow = "0 11px14px rgba(0, 0, 0, 0.2) !important;";
+        
+    markerClusters.addLayer(m);
     pointsArry.push(m);
 	</script>
 <?php } ?>
@@ -152,8 +189,28 @@ Map
                 color: '#3EB9FD',
                 fillColor: '#3EB9FD',
                 fillOpacity: 0.6
-                }).addTo(mymap).bindPopup("<h2><?php echo $area->getName()?></h2><br /><p><?php echo $area->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $area->getID();?>'>VIEW AREA</a>");
-
+                }).addTo(mymap);
+    
+            area.bindPopup("<h2><?php echo $area->getName()?></h2><br /><p><?php echo $area->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $area->getID();?>&type=A'>VIEW AREA</a>");
+    
+    
+            area.openPopup();
+            area.closePopup();
+    
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.background = "linear-gradient(               rgba(10,38,61,.8), rgba(10,38,61,.8)), url('<?php echo $source.$area->getHeaderPath()?>')";
+        
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundSize = "cover";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundRepeat = "no-repeat";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundPosition = "center center";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.position = "relative";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.overflow = "hidden";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.color = "#fff";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.fontFamily = "'montserratlight' !important";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.fontSize = "16px";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.lineHeight = "24px";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.borderRadius = "0px !important";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.boxShadow = "0 11px14px rgba(0, 0, 0, 0.2) !important;"
+    
             pointsArry.push(L.marker([area.getBounds().getCenter().lat, area.getBounds().getCenter().lng], {icon: iconCircle}));
         <?php } ?>
     <?php } ?>

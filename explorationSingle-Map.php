@@ -121,7 +121,8 @@ L.marker([44.6488, -63.5752], {icon: iconCircle}).addTo(mymap)
      
 				var iconCircle = L.icon({
 					iconUrl: 'assets/imgs/markers/<?php echo ($x+1)?>.svg',
-						iconSize:     [16, 16], // size of the icon
+						/*iconSize:     [16, 16],*/ // size of the icon
+                        iconSize:     [25, 25],
 						iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
 				});
@@ -146,7 +147,8 @@ L.marker([44.6488, -63.5752], {icon: iconCircle}).addTo(mymap)
 	
 				var iconCircle = L.icon({
 					iconUrl: 'assets/imgs/markers/<?php echo ($x+1)?>.svg',
-						iconSize:     [16, 16], // size of the icon
+						/*iconSize:     [16, 16],*/ // size of the icon
+                        iconSize:     [25, 25], // size of the icon
 						iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
 				});
@@ -160,7 +162,7 @@ L.marker([44.6488, -63.5752], {icon: iconCircle}).addTo(mymap)
               }).addTo(mymap).bindPopup("<h2><?php echo $stop->getName()?></h2><br /><p><?php echo $stop->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>&type=A&s=<?php echo ($x+1)?>&t=<?php echo count($stops)?>&expid=<?php echo $_GET['id'] ?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
      
 	   m = L.marker([area.getBounds().getCenter().lat, area.getBounds().getCenter().lng], {icon: iconCircle}).addTo(mymap)
-                        .bindPopup("<h2><?php echo $stop->getName();?></h2><br /><p><?php echo $stop->getDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>&type=L&s=<?php echo ($x+1)?>&t=<?php echo count($stops)?>&expid=<?php echo $_GET['id'] ?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
+                        .bindPopup("<h2><?php echo $stop->getName();?></h2><br /><p><?php echo $stop->getDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>&type=A&s=<?php echo ($x+1)?>&t=<?php echo count($stops)?>&expid=<?php echo $_GET['id'] ?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
              
             
             latlng.push([area.getBounds().getCenter().lat, area.getBounds().getCenter().lng]);
