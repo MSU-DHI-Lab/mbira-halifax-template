@@ -131,6 +131,26 @@ L.marker([44.6488, -63.5752], {icon: iconCircle}).addTo(mymap)
                 m = L.marker([<?php echo $stop->getLatitude() ;?>, <?php echo $stop->getLongitude();?>], {icon: iconCircle}).addTo(mymap)
                         .bindPopup("<h2><?php echo $stop->getName();?></h2><br /><p><?php echo $stop->getDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>&type=L&s=<?php echo ($x+1)?>&t=<?php echo count($stops)?>&expid=<?php echo $_GET['id'] ?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
                /* m.bindLabel("My Label");*/
+    
+                m.openPopup();
+                m.closePopup();    
+
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.background = "linear-gradient(               rgba(10,38,61,.8), rgba(10,38,61,.8)), url('<?php echo $source.$stop->getHeaderPath()?>')";
+
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundSize = "cover";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundRepeat = "no-repeat";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundPosition = "center center";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.position = "relative";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.overflow = "hidden";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.color = "#fff";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.fontFamily = "'montserratlight' !important";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.fontSize = "16px";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.lineHeight = "24px";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.borderRadius = "0px !important";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.boxShadow = "0 11px14px rgba(0, 0, 0, 0.2) !important;";
+    
+    
+    
                 pointsArry.push(m);
                 latlng.push([<?php echo $stop->getLatitude() ;?>, <?php echo $stop->getLongitude();?>]);
                 /*m.addTo(mymap);*/
@@ -164,6 +184,42 @@ L.marker([44.6488, -63.5752], {icon: iconCircle}).addTo(mymap)
 	   m = L.marker([area.getBounds().getCenter().lat, area.getBounds().getCenter().lng], {icon: iconCircle}).addTo(mymap)
                         .bindPopup("<h2><?php echo $stop->getName();?></h2><br /><p><?php echo $stop->getDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>&type=A&s=<?php echo ($x+1)?>&t=<?php echo count($stops)?>&expid=<?php echo $_GET['id'] ?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
              
+    
+                m.openPopup();
+                m.closePopup();    
+
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.background = "linear-gradient(               rgba(10,38,61,.8), rgba(10,38,61,.8)), url('<?php echo $source.$stop->getHeaderPath()?>')";
+
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundSize = "cover";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundRepeat = "no-repeat";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundPosition = "center center";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.position = "relative";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.overflow = "hidden";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.color = "#fff";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.fontFamily = "'montserratlight' !important";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.fontSize = "16px";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.lineHeight = "24px";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.borderRadius = "0px !important";
+                m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.boxShadow = "0 11px14px rgba(0, 0, 0, 0.2) !important;";
+    
+    
+                area.openPopup();
+                area.closePopup();
+
+                area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.background = "linear-gradient(               rgba(10,38,61,.8), rgba(10,38,61,.8)), url('<?php echo $source.$stop->getHeaderPath()?>')";
+                
+                area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundSize = "cover";
+                area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundRepeat = "no-repeat";
+                area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundPosition = "center center";
+                area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.position = "relative";
+                area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.overflow = "hidden";
+                area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.color = "#fff";
+                area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.fontFamily = "'montserratlight' !important";
+                area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.fontSize = "16px";
+                area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.lineHeight = "24px";
+                area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.borderRadius = "0px !important";
+                area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.boxShadow = "0 11px14px rgba(0, 0, 0, 0.2) !important;"
+    
             
             latlng.push([area.getBounds().getCenter().lat, area.getBounds().getCenter().lng]);
          <?php } ?>     

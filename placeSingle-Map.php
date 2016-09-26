@@ -331,7 +331,7 @@ Map
 	var iconCircle = L.icon({
 		iconUrl: 'js/leaflet/images/marker-icon.svg',
 
-			iconSize:     [150, 150], // size of the icon
+			iconSize:     [25, 25], // size of the icon
 			iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
 		popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
 	});
@@ -339,9 +339,28 @@ Map
     
 
         
-    L.marker([<?php echo $location->getLatitude() ?>, <?php echo $location->getLongitude() ?>], {icon: iconCircle}).addTo(mymap)
+    var m = L.marker([<?php echo $location->getLatitude() ?>, <?php echo $location->getLongitude() ?>], {icon: iconCircle}).addTo(mymap)
 	.bindPopup("<?php echo $location->getName()?></h2><br /><p><?php echo $location->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $location->getID();?>&type=L'>VIEW LOCATION</a>");
     
+        
+        m.openPopup();
+        m.closePopup();    
+        
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.background = "linear-gradient(               rgba(10,38,61,.8), rgba(10,38,61,.8)), url('<?php echo $source.$location->getHeaderPath()?>')";
+        
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundSize = "cover";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundRepeat = "no-repeat";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundPosition = "center center";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.position = "relative";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.overflow = "hidden";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.color = "#fff";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.fontFamily = "'montserratlight' !important";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.fontSize = "16px";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.lineHeight = "24px";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.borderRadius = "0px !important";
+        m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.boxShadow = "0 11px14px rgba(0, 0, 0, 0.2) !important;";
+        
+        
     </script>
 <?php } ?>
 
@@ -380,6 +399,24 @@ Map
   }).addTo(mymap).bindPopup("<h2><?php echo $area->getName()?></h2><br /><p><?php echo $area->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $area->getID();?>&type=A'>VIEW AREA</a>");
 
 
+            area.openPopup();
+            area.closePopup();
+    
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.background = "linear-gradient(               rgba(10,38,61,.8), rgba(10,38,61,.8)), url('<?php echo $source.$area->getHeaderPath()?>')";
+        
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundSize = "cover";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundRepeat = "no-repeat";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundPosition = "center center";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.position = "relative";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.overflow = "hidden";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.color = "#fff";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.fontFamily = "'montserratlight' !important";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.fontSize = "16px";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.lineHeight = "24px";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.borderRadius = "0px !important";
+            area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.boxShadow = "0 11px14px rgba(0, 0, 0, 0.2) !important;"
+        
+        
         var group = new L.featureGroup(pointsArry);
         mymap.fitBounds(group.getBounds());
         
