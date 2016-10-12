@@ -1,13 +1,13 @@
 <header>
     <?php /*require "lib/site.php"; */?>
 	<a href="index.php" class="projectTitle">
-        <?php 
+        <?php
             echo $projects->get(PROJID)->getName();
 /*            $project = $projects->get(PROJID);  	///< Load the project
             $pagename = $project->getName();        		///< Get project name*/
         ?>
     </a>
-    
+
 	<nav class="cd-stretchy-nav-search">
 	<a class="cd-nav-trigger-search" href="#0">
 		Menu
@@ -16,8 +16,8 @@
 
 	<ul>
 		<li><span>
-		<form action="searchResults.php">
-				<input id="header_search" type="search" placeholder="Search">
+		<form action="searchResults.php" method="post">
+				<input id="header_search" name="query" type="search" placeholder="Search">
 			</form></span></li>
 	</ul>
 
@@ -32,7 +32,7 @@
 
 	<ul>
         <script>var url = window.location.href</script>
-        
+
 		<li><a href="sms:" class="active"><span>Message</span></a></li>
 		<li><a href="mailto:?subject=mbira&body=Test%20Email"><span>Mail</span></a></li>
 		<li><a href="#0" id="copyLink"><span>Copy Link</span></a></li>
@@ -54,7 +54,7 @@
 		Menu
 		<span aria-hidden="true"></span>
 	</a>
-        
+
 	<ul>
 		<li><a href="index.php" class="active"><span>Home</span></a></li>
 		<li><a href="about.php"><span>About</span></a></li>
@@ -63,7 +63,7 @@
 		<li><a href="areasAll.php"><span>Areas</span></a></li>
 		<li><a href="explorationsAll.php"><span>Explorations</span></a></li>
 		<li><a href="placeSingle.php?id=<?php
-            
+
 				if(rand(0,1000)%2 == 1){
                     echo $locations->get_random().'&type=L';
 				}
@@ -72,7 +72,7 @@
 				}
 
                 ?>
-            
+
             "><span>Surprise Me</span></a></li>
 		<li><a href="signIn.php"><span>Sign In / Sign Up</span></a></li>
 	</ul>
