@@ -8,15 +8,14 @@
 ?>
 
 <?php
-	ob_start();		 
+	ob_start();
 
 	if(isset($_GET['id'])) {
 		$id = $_GET['id'];
 		if($id == 0) {
 			$id = 1;
 		}
-		$exploration = $explorations->get($id);
-        $location = $locations->get($id);
+	$exploration = $explorations->get($id);
         $stops = $exploration->getStops();
 		$area = $areas->get($id);
 	}else {
@@ -26,9 +25,9 @@
 ?>
 
 <?php
-	
+
 	$pagename = $exploration->getName();
-	
+
 	include('includes/head.php');
 	include('includes/header.php');
 ?>
@@ -36,7 +35,7 @@
 <!--===============================
 Landing Image
 ================================-->
-<div id='landing' class="main" style="background: url('<?php echo $source.$exploration->getHeaderPath();?>') center center;    
+<div id='landing' class="main" style="background: url('<?php echo $source.$exploration->getHeaderPath();?>') center center;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -57,12 +56,25 @@ Exploration Nav & About
 				<p class="placeNavItemTitle">START EXPLORATION</p>
 			</div>
 		</a>
-		<a href="explorationSingle-Conversations.php?id=<?php echo $_GET['id']; ?>">
-			<div class="placeNavItem">
-			<img src="assets/svgs/conversations.svg"/>
-				<p class="placeNavItemTitle">VIEW CONVERSATIONS</p>
-			</div>
-		</a>
+
+
+    <?php
+        foreach($explorations->getCommentsToggle($_GET['id'])[0] as $val)
+        {
+            if($val == "true"){
+    ?>
+    <a href="explorationSingle-Conversations.php?id=<?php echo $_GET['id']; ?>">
+      <div class="placeNavItem">
+        <img src="assets/svgs/conversations.svg"/>
+        <p class="placeNavItemTitle">VIEW CONVERSATIONS</p>
+      </div>
+    </a>
+    <?php
+                break;
+            }
+        }
+    ?>
+
 	</div>
 	<p><?php $exploration->getDes();?></p>
 </section>
@@ -74,15 +86,15 @@ Exploration Stops
 	<div class="collectionTitle"><h4>Stops</h4></div>
 	<div id='collections-layout' class='collections-grid'>
 
-    <?php        
+    <?php
         for ($x = 0; $x < count($stops); $x++) {
-			
+
             /*$stops[$x] = str_replace("A", "", $stops[$x]);*/
             $stopsArray = array();
             $type = array();
-                   
-            if($locations->get($stops[$x]) == null || $areas->get(str_replace("A", "", $stops[$x])) == null){ 
-            
+
+            if($locations->get($stops[$x]) == null || $areas->get(str_replace("A", "", $stops[$x])) == null){
+
                 if($locations->get($stops[$x]) != null){
                     $stop = $locations->get($stops[$x]);
                         echo '
@@ -113,9 +125,9 @@ Exploration Stops
                         ';
                 }
             }
-            
-            if($locations->get($stops[$x]) != null && $areas->get(str_replace("A", "", $stops[$x])) != null){ 
-                
+
+            if($locations->get($stops[$x]) != null && $areas->get(str_replace("A", "", $stops[$x])) != null){
+
                 if($locations->get($stops[$x]) != null){
                     $stop = $locations->get($stops[$x]);
                         echo '
@@ -145,11 +157,11 @@ Exploration Stops
                             </div>
                         ';
                 }
-                
-                
+
+
                 $x++;
             }
-            
+
 		}
     ?>
 	</div>
