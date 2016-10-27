@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0">
-	<title><?php echo $pagename; ?> | <?php echo $projects->get(PROJID)->getName(); ?></title>
+	<title><?php if (isset($pagename)) echo $pagename." | "; ?><?php echo $projects->get(PROJID)->getName(); ?></title>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/navMenu.css">

@@ -1,12 +1,29 @@
 <?php
-    $login = false;
-    require_once "lib/site.php";
-/*    include 'app/inc/head.php';
-    include 'app/inc/left-sidebar.php';*/
+
+$login = false;
+require_once "lib/site.php";
 ?>
 
-<form id="loginForm" action="#" method="post">
-    <h1 id="loginHeader">Validating</h1>
-    <p>Email has been sent to you for validation. Please click on the validation link before you try to log in.</p>
-    <p><a href="signIn.php">Back to Login</a> </p>
+<!--===============================
+Landing Image
+================================-->
+<div id='landing' class="signInUp">
+	<div id='landing-overlay-blend' class="main"></div>
+</div>
+
+<!--===============================
+Sign Up Title
+================================-->
+<section id='main' class="signInUp">
+	<h2 class="signInUp">Validating</h2>
+</section>
+
+<h1 id="loginHeader">Validating</h1>
+<p>
+<?php
+  echo $_SESSION['validating-text'];
+  unset($_SESSION['validating-text']);
+?></p>
+<p><a href="signIn.php">Back to Login</a> </p>
+
 </form>

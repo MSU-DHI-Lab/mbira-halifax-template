@@ -27,6 +27,7 @@
 <?php
 
 	$pagename = $exploration->getName();
+	$name = $pagename;
 
 	include('includes/head.php');
 	include('includes/header.php');

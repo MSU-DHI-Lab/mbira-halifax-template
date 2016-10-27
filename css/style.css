@@ -3,18 +3,26 @@
 *****************************************************************************/
 
 @font-face {
-    font-family: 'montserratlight';
-    src: url('../assets/fonts/Montserrat - Light/montserrat-light-webfont.eot');
-    src: url('../assets/fonts/Montserrat - Light/montserrat-light-webfont.eot?#iefix') format('embedded-opentype'), url('../assets/fonts/Montserrat - Light/montserrat-light-webfont.woff2') format('woff2'), url('../assets/fonts/Montserrat - Light/montserrat-light-webfont.woff') format('woff'), url('../assets/fonts/Montserrat - Light/montserrat-light-webfont.ttf') format('truetype'), url('../assets/fonts/Montserrat - Light/montserrat-light-webfont.svg#montserratlight') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'montserratlight';
+  src: url('../assets/fonts/Montserrat - Light/montserrat-light-webfont.eot');
+  src: url('../assets/fonts/Montserrat - Light/montserrat-light-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../assets/fonts/Montserrat - Light/montserrat-light-webfont.woff2') format('woff2'),
+       url('../assets/fonts/Montserrat - Light/montserrat-light-webfont.woff') format('woff'),
+       url('../assets/fonts/Montserrat - Light/montserrat-light-webfont.ttf') format('truetype'),
+       url('../assets/fonts/Montserrat - Light/montserrat-light-webfont.svg#montserratlight') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'montserratregular';
-    src: url('../assets/fonts/Montserrat - Regular/Montserrat-Regular.eot');
-    src: url('../assets/fonts/Montserrat - Regular/Montserrat-Regular.eot?#iefix') format('embedded-opentype'), url('../assets/fonts/Montserrat - Regular/Montserrat-Regular.woff2') format('woff2'), url('../assets/fonts/Montserrat - Regular/Montserrat-Regular.woff') format('woff'), url('../assets/fonts/Montserrat - Regular/Montserrat-Regular.ttf') format('truetype'), url('../assets/fonts/Montserrat - Regular/Montserrat-Regular.svg#montserratregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'montserratregular';
+  src: url('../assets/fonts/Montserrat - Regular/Montserrat-Regular.eot');
+  src: url('../assets/fonts/Montserrat - Regular/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
+       url('../assets/fonts/Montserrat - Regular/Montserrat-Regular.woff2') format('woff2'),
+       url('../assets/fonts/Montserrat - Regular/Montserrat-Regular.woff') format('woff'),
+       url('../assets/fonts/Montserrat - Regular/Montserrat-Regular.ttf') format('truetype'),
+       url('../assets/fonts/Montserrat - Regular/Montserrat-Regular.svg#montserratregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 /*=========================General Styles=========================*/
@@ -22,26 +30,12 @@ html{
   background: #0A263D;
 }
 body {
-    background: #0A263D;
-    font-family: 'montserratlight';
-    overflow-y: scroll;
+  background: #0A263D;
+  font-family: 'montserratlight';
+  overflow-y: scroll;
+  color: white;
 }
-h1 {
-  font-weight: normal;
-}
-h2 {
-  font-weight: normal;
-}
-h3 {
-  font-weight: normal;
-}
-h4 {
-  font-weight: normal;
-}
-h5 {
-  font-weight: normal;
-}
-h6 {
+h1,h2,h3,h4,h5,h6 {
   font-weight: normal;
 }
 a {
@@ -360,7 +354,7 @@ through a media query only recognized in IE */
     width: 100%;
     z-index: 1;
     box-sizing: border-box;
-    margin-left: 25%; 
+    margin-left: 25%;
     margin-top: 15%;
 }
 .collections-grid .collection-image img {
@@ -369,7 +363,7 @@ through a media query only recognized in IE */
     object-fit: cover;
 }
 .collection-image-surprise img{
-    height: 50%; 
+    height: 50%;
     width: 55%;
     object-fit: cover;
 }
@@ -952,17 +946,17 @@ through a media query only recognized in IE */
 
 /*========================= Location/ Area On an Exploration =========================*/
 .findMyLocation {
-    height: 50px; 
-    width: 50px; 
-    background-image: url("../assets/svgs/locate.svg"); 
-    z-index: 300000; 
-    position: fixed; 
-    bottom: 16px; 
-    right: 16px; 
-    background-repeat: no-repeat; 
-    background-color: #3EB9FD; 
-    background-position: center; 
-    border: 1px solid white; 
+    height: 50px;
+    width: 50px;
+    background-image: url("../assets/svgs/locate.svg");
+    z-index: 300000;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    background-repeat: no-repeat;
+    background-color: #3EB9FD;
+    background-position: center;
+    border: 1px solid white;
     cursor: pointer;
 }
 .onExploration {
@@ -1521,4 +1515,3 @@ footer > div {
         text-align: center;
     }
 }
-

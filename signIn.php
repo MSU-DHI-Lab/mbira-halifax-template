@@ -1,18 +1,16 @@
 <?php
-    require "lib/site.php";
-    /*ob_start();*/		
+  require "lib/site.php";
+    /*ob_start();*/
 	$pagename = 'Sign In';
 	include('includes/head.php');
 	include('includes/header.php');
-?>
 
-
-<?php
-    if (isset($_SESSION['login-error'])) {
-        $msg = $_SESSION['login-error'];
-    } else {
-        $msg = '';
-    }
+  if (isset($_SESSION['login-error'])) {
+      $msg = $_SESSION['login-error'];
+      unset($_SESSION['login-error']);
+  } else {
+      $msg = '';
+  }
 ?>
 
 <!--===============================
@@ -39,19 +37,20 @@ Sign In Title
 <?php if(!isset($_SESSION['user'])) { ?>
 <section id='main' class="signInUp">
 	<h2 class="signInUp">Sign In</h2>
-</section>    
+</section>
 <!--===============================
 Sign In Form & Submit
 ================================-->
-<?php 
+<?php
 $redirectLocation = $_SERVER['REQUEST_URI'];
 ?>
-    
+
 <section id='signInUp' class="main">
 	<!--<form class="signInUpForm" name="login" action="loggedIn.php" method="post" accept-charset="utf-8">-->
     <form class="signInUpForm" name="login" action="login-post.php" method="post" accept-charset="utf-8">
-			 <label for="usermail">Email</label>
-			 <input class="loginField" type="email" name="usermail" placeholder="EMAIL"><br>
+       <p><?php echo $msg ?></p>
+			 <label for="usermail">Email or Username</label>
+			 <input class="loginField" name="user" placeholder="EMAIL OR USERNAME"><br>
 			 <label for="password">Password</label>
 			 <input class="loginField" type="password" name="password" placeholder="PASSWORD"><br>
 			 <input class="Submit" type="submit" value="LOGIN"><br>
@@ -61,37 +60,37 @@ $redirectLocation = $_SERVER['REQUEST_URI'];
     </form>
     <!--</form>-->
 </section>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-<?php 
+
+
+
+
+
+
+
+
+
+<?php
 $redirectLocation = $_SERVER['REQUEST_URI'];
-$pgType = "";                                     
-include('includes/modalForgotPassword.php'); 
+$pgType = "";
+include('includes/modalForgotPassword.php');
 ?>
 
 <script>
-$('.forgotPassword').click(function() {
-	$('#modalForgotPasswordPrompt').addClass('displayModal');
-	$('body').addClass('modal-open');
-	return false;
-});
-$('.closeModalPwdPrompt').click(function() {
-	$('#modalForgotPasswordPrompt').removeClass('displayModal');
-	$('body').removeClass('modal-open');
-});
+  $('.forgotPassword').click(function() {
+  	$('#modalForgotPasswordPrompt').addClass('displayModal');
+  	$('body').addClass('modal-open');
+  	return false;
+  });
+  $('.closeModalPwdPrompt').click(function() {
+  	$('#modalForgotPasswordPrompt').removeClass('displayModal');
+  	$('body').removeClass('modal-open');
+  });
 </script>
 
-    
-    
-    
-    
+
+
+
+
 <?php  } ?>
 <!--===============================
 Scripts & Footer

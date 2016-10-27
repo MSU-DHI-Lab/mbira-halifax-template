@@ -1,7 +1,7 @@
 <?php
     require "lib/site.php";
-	
-    ob_start();		 
+
+    ob_start();
 
 	if(isset($_GET['id'])) {
 		$id = $_GET['id'];
@@ -11,14 +11,14 @@
 		$exhibit = $exhibits->get($id);
         $location = $locations->get($id);
         $area = $areas->get($id);
-		
+
         $area = $areas->get($id);
         $location_ids = $exhibits->getLocationID($id);
         $area_ids = $exhibits->getAreaID($id);
 	}else {
 		header('Location: /placeSingle-Map.php');
 	}
-	
+
 	// "L" for location
     // "A" for area
     $placeType = "";
@@ -39,7 +39,7 @@
     else if($placeType == "A"){
         $pagename = $area->getName();
     }
-	
+
 	include('includes/head.php');
 	include('includes/header.php');
 ?>
@@ -65,7 +65,7 @@ if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {
 /*        if($areas->get($stops[$x]) != null){
             array_push($stopsArry, $stops[$x]);
         }*/
-        
+
         if($areas->get(str_replace("A", "", $stops[$x])) != null){
             array_push($stopsArry, str_replace("A", "", $stops[$x]));
         }
@@ -109,7 +109,7 @@ if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {
 /*        if($areas->get($stops[$x]) != null){
             array_push($stopsArry, $stops[$x]);
         }*/
-        
+
         if($areas->get(str_replace("A", "", $stops[$x])) != null){
             array_push($stopsArry, str_replace("A", "", $stops[$x]));
         }
@@ -119,12 +119,12 @@ if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {
 
 
 <?php
-    // ----- Building data structure to keep track of types of stops in an array  
+    // ----- Building data structure to keep track of types of stops in an array
     if(isset($_GET['expid'])){
         $types = array();
         for ($x = 0; $x < count($stops); $x++) {
 
-            if($locations->get($stops[$x]) == null || $areas->get($stops[$x]) == null){ 
+            if($locations->get($stops[$x]) == null || $areas->get($stops[$x]) == null){
                 if($locations->get($stops[$x]) != null){
                     $stop = $locations->get($stops[$x]);
                     array_push($types, "L");
@@ -134,14 +134,14 @@ if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {
                     $stop = $areas->get($stops[$x]);
                     array_push($types, "A");
                 }*/
-                
+
                 if($areas->get(str_replace("A", "", $stops[$x])) != null){
                     $stop = $areas->get(str_replace("A", "", $stops[$x]));
                     array_push($types, "A");
                 }
             }
-            
-            if($locations->get($stops[$x]) != null && $areas->get($stops[$x]) != null){ 
+
+            if($locations->get($stops[$x]) != null && $areas->get($stops[$x]) != null){
                 if($locations->get($stops[$x]) != null){
                     $stop = $locations->get($stops[$x]);
                     array_push($types, "L");
@@ -152,22 +152,22 @@ if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {
                     array_push($types, "A");
                 }
                 $x++;
-            }             
+            }
         }
-    }   
+    }
     // ----- end
 ?>
 
 
 <div class="onExploration sub">
-    <a class="previousStop" href="placeSingle-Map.php?id=<?php 
+    <a class="previousStop" href="placeSingle-Map.php?id=<?php
             if($step == "1"){
                 echo $stopsArry[$total-1];
             }
             else {
                 echo $stopsArry[$step - 2];
             }
-        ?>&type=<?php 
+        ?>&type=<?php
             if($step == "1"){
                 echo $types[$total-1];
             }
@@ -182,18 +182,18 @@ if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) {
                 echo ($step - 1);
             }?>&t=<?php echo $total; ?>&expid=<?php echo $expid; ?>
                               "><img src="assets/svgs/arrow.svg"/></a>
-        
-        
+
+
     <a class="explorationTitle" href="explorationSingle.php?id=<?php echo $expid; ?>"><?php echo $explorations->get($expid)->getName(); ?></a>
     <p class="stopNumberOfNumber"><?php echo $step; ?> of <?php echo $total; ?></p>
-    <a class="nextStop" href="placeSingle-Map.php?id=<?php 
+    <a class="nextStop" href="placeSingle-Map.php?id=<?php
             if($step == $total){
                 echo $stopsArry[0] ;
             }
             else{
                 echo $stopsArry[$step] ;
             }
-                              ?>&type=<?php 
+                              ?>&type=<?php
             if($step == $total){
                 echo $types[0];
             }
@@ -220,21 +220,21 @@ Place NavBar
 	<?php if($placeType == "L") { ?>
 		<a class="back" href="placeSingle.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>"><img class="backArrow" src="assets/svgs/arrow.svg"/><p class="backTitle"><?php echo $location->getName();?></p></a>
 	<?php } ?>
-	
+
 	<?php if($placeType == "A") { ?>
 		<a class="back" href="placeSingle.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>"><img class="backArrow" src="assets/svgs/arrow.svg"/><p class="backTitle"><?php echo $area->getName();?></p></a>
 	<?php } ?>
-	
+
 	<div class="right">
-        
+
 		<a class="active" href="placeSingle-Map.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Map</a>
-        
-        
-        
+
+
+
         <?php if ($placeType == "L") {
         foreach($locations->getMediaToggle($_GET['id'])[0] as $val)
         {
-            if($val == "true"){        
+            if($val == "true"){
                 ?>
                 <a href="placeSingle-Media.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Media</a>
                 <?php
@@ -245,7 +245,7 @@ Place NavBar
         <?php if ($placeType == "A") {
         foreach($areas->getMediaToggle($_GET['id'])[0] as $val)
         {
-            if($val == "true"){        
+            if($val == "true"){
                 ?>
                 <a href="placeSingle-Media.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Media</a>
                 <?php
@@ -253,15 +253,15 @@ Place NavBar
                 }
             }
         } ?>
-        
-        
-        
-        
-        
+
+
+
+
+
         <?php if ($placeType == "L") {
         foreach($locations->getCommentsToggle($_GET['id'])[0] as $val)
         {
-            if($val == "true"){        
+            if($val == "true"){
             ?>
             <a href="placeSingle-Conversations.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Conversations</a>
             <?php
@@ -272,7 +272,7 @@ Place NavBar
         <?php if ($placeType == "A") {
         foreach($areas->getCommentsToggle($_GET['id'])[0] as $val)
         {
-            if($val == "true"){        
+            if($val == "true"){
                 ?>
                 <a href="placeSingle-Conversations.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Conversations</a>
                 <?php
@@ -280,15 +280,15 @@ Place NavBar
                 }
             }
         } ?>
-        
-        
-        
-        
-        
+
+
+
+
+
         <?php if ($placeType == "L") {
         foreach($locations->getDigDeeperToggle($_GET['id'])[0] as $val)
         {
-            if($val == "true"){        
+            if($val == "true"){
                 ?>
                 <a href="placeSingle-DigDeeper.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Dig Deeper</a>
                 <?php
@@ -299,7 +299,7 @@ Place NavBar
         <?php if ($placeType == "A") {
         foreach($areas->getDigDeeperToggle($_GET['id'])[0] as $val)
         {
-            if($val == "true"){        
+            if($val == "true"){
             ?>
             <a href="placeSingle-DigDeeper.php?id=<?php echo $_GET['id'];?>&type=<?php echo $_GET['type']?><?php if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['expid'])) { ?>&s=<?php echo $step;?>&t=<?php echo $total?>&expid=<?php echo $expid;?><?php } ?>">Dig Deeper</a>
             <?php
@@ -319,7 +319,7 @@ Map
  <script src="js/leaflet/leaflet.js"></script>
 <?php if($placeType == "L") { ?>
 	<script>
-                
+
 	var mymap = L.map('mapid').setView([<?php echo $location->getLatitude() ?>, <?php echo $location->getLongitude() ?>], 13);
 	L.tileLayer('https://api.mapbox.com/styles/v1/austintruchan/cinjdipo0001rb9nkjjhlaquk/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXVzdGludHJ1Y2hhbiIsImEiOiI2WHhzNWFFIn0.yOkdF1byJMqUuHrn7rJhSQ', {
 		attribution: 'Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"http://mapbox.com\">Mapbox</a>',
@@ -335,19 +335,19 @@ Map
 			iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
 		popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
 	});
-     
-    
 
-        
+
+
+
     var m = L.marker([<?php echo $location->getLatitude() ?>, <?php echo $location->getLongitude() ?>], {icon: iconCircle}).addTo(mymap)
 	.bindPopup("<?php echo $location->getName()?></h2><br /><p><?php echo $location->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $location->getID();?>&type=L'>VIEW LOCATION</a>");
-    
-        
+
+
         m.openPopup();
-        m.closePopup();    
-        
+        m.closePopup();
+
         m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.background = "linear-gradient(               rgba(10,38,61,.8), rgba(10,38,61,.8)), url('<?php echo $source.$location->getHeaderPath()?>')";
-        
+
         m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundSize = "cover";
         m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundRepeat = "no-repeat";
         m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundPosition = "center center";
@@ -359,14 +359,14 @@ Map
         m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.lineHeight = "24px";
         m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.borderRadius = "0px !important";
         m.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.boxShadow = "0 11px14px rgba(0, 0, 0, 0.2) !important;";
-        
-        
+
+
     </script>
 <?php } ?>
 
 
 <?php if($placeType == "A") { ?>
-	<script>		
+	<script>
 		var mymap = L.map('mapid').setView([<?php echo $area->getCenter()[0];?>, <?php echo $area->getCenter()[1];?>], 13);
 
 		L.tileLayer('https://api.mapbox.com/styles/v1/austintruchan/cinjdipo0001rb9nkjjhlaquk/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXVzdGludHJ1Y2hhbiIsImEiOiI2WHhzNWFFIn0.yOkdF1byJMqUuHrn7rJhSQ', {
@@ -383,15 +383,15 @@ Map
 				iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
 			popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
 		});
-			
+
         var pointsArry = Array();
 		var coords = <?php echo $area->getCoordinates(); ?>;
 		for(x=0; x<coords.length; x++)
-		{	
+		{
 			m = L.marker([coords[x]["lat"], coords[x]["lng"]]);
             pointsArry.push(m);
 		}
-        
+
           var area  = L.polygon(coords, {
     color: '#3EB9FD',
     fillColor: '#3EB9FD',
@@ -401,9 +401,9 @@ Map
 
             area.openPopup();
             area.closePopup();
-    
+
             area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.background = "linear-gradient(               rgba(10,38,61,.8), rgba(10,38,61,.8)), url('<?php echo $source.$area->getHeaderPath()?>')";
-        
+
             area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundSize = "cover";
             area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundRepeat = "no-repeat";
             area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.backgroundPosition = "center center";
@@ -415,11 +415,11 @@ Map
             area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.lineHeight = "24px";
             area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.borderRadius = "0px !important";
             area.getPopup().getElement().querySelector('.leaflet-popup-content-wrapper').style.boxShadow = "0 11px14px rgba(0, 0, 0, 0.2) !important;"
-        
-        
+
+
         var group = new L.featureGroup(pointsArry);
         mymap.fitBounds(group.getBounds());
-        
+
 	</script>
 <?php } ?>
 

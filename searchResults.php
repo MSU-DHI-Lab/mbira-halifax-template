@@ -2,6 +2,7 @@
   require "lib/site.php";
 	include('includes/head.php');
 	include('includes/header.php');
+  $pagename = "Search Results";
   unset($_SESSION['search-error']);
 
   $response = $search->newSearch(
