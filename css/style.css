@@ -141,7 +141,7 @@ header {
 }
 #landing-overlay h3 {
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 2;
   max-width: 620px;
   text-align: center;
@@ -172,7 +172,7 @@ header {
 
 .landing-h3 {
     color: #fff;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 2;
     max-width: 620px;
     text-align: center;
@@ -225,7 +225,7 @@ header {
     color: #fff;
     width: 100%;
     max-width: 620px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 2;
     text-align: center;
     margin: 0 0 30px 0;
@@ -235,7 +235,7 @@ header {
     border: none;
     color: #3EB9FD;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 16px;
     width: 200px;
     height: 70px;
     -webkit-transition: all 600ms ease 0s;
@@ -420,7 +420,7 @@ through a media query only recognized in IE */
 }
 .collections-grid .collection-title {
     margin: 0;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: normal;
 }
 .collections-grid .collection-info p {
@@ -440,7 +440,7 @@ through a media query only recognized in IE */
     text-decoration: none;
     color: rgba(255,255,255,0.8);
     margin: 20% 0 0 0;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: normal;
     -webkit-transition: all 600ms ease 0s;
     transition: all 600ms ease 0s;
@@ -631,13 +631,13 @@ through a media query only recognized in IE */
 }
 .placeNavItemTitle {
     color: #3EB9FD;
-    font-size: 14px;
+    font-size: 16px;
 }
 #main > p {
     color: #fff;
     width: 100%;
     max-width: 1000px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 2;
     text-align: left;
 }
@@ -757,7 +757,7 @@ through a media query only recognized in IE */
 }
 .custom-popup .leaflet-popup-content-wrapper a {
   margin-top: 0;
-  font-size: 14px;
+  font-size: 16px;
   color: #3EB9FD !important;
   position: absolute;
   right: 20px;
@@ -817,7 +817,7 @@ through a media query only recognized in IE */
   text-align: center;
   z-index: 19999;
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
   padding: 20px 0;
   margin-top: 20px;
@@ -878,7 +878,7 @@ through a media query only recognized in IE */
   vertical-align: middle;
 }
 .userName {
-  font-size: 14px;
+  font-size: 16px;
   padding-right: 20px;
 }
 .userDate img {
@@ -905,7 +905,7 @@ through a media query only recognized in IE */
   padding-right: 20px;
 }
 .viewConversation a {
-  font-size: 14px;
+  font-size: 16px;
   color: #3EB9FD;
 }
 .selectedConversation {
@@ -1043,21 +1043,21 @@ input:focus {
 }
 ::-webkit-input-placeholder {
     color: #FFF;
-    font-size: 14px;
+    font-size: 16px;
 }
 :-moz-placeholder {
  /* Firefox 18- */
  color: #FFF;
- font-size: 14px;
+ font-size: 16px;
 }
 ::-moz-placeholder {
   /* Firefox 19+ */
     color: #FFF;
-    font-size: 14px;
+    font-size: 16px;
 }
 :-ms-input-placeholder {
   color: #FFF;
-  font-size: 14px;
+  font-size: 16px;
 }
 .loginField {
     background: none;
@@ -1337,27 +1337,27 @@ textarea {
   text-align: center;
   z-index: 19999;
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
   padding: 20px 0;
 }
 .startConversationForm ::-webkit-input-placeholder {
     color: #FFF;
-    font-size: 14px;
+    font-size: 16px;
 }
 .startConversationForm :-moz-placeholder {
  /* Firefox 18- */
  color: #FFF;
- font-size: 14px;
+ font-size: 16px;
 }
 .startConversationForm ::-moz-placeholder {
   /* Firefox 19+ */
     color: #FFF;
-    font-size: 14px;
+    font-size: 16px;
 }
 .startConversationForm :-ms-input-placeholder {
   color: #FFF;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /*=========================Media Modal=========================*/
@@ -1458,7 +1458,7 @@ textarea {
 	float: right;
 	color: #3EB9FD;
 	margin-top: -70px;
-	font-size: 14px;
+	font-size: 16px;
 	line-height: 1;
 	position: relative;
 	z-index: 999;
