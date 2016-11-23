@@ -129,7 +129,7 @@ L.marker([44.6488, -63.5752], {icon: iconCircle}).addTo(mymap)
 	 
 	 
                 m = L.marker([<?php echo $stop->getLatitude() ;?>, <?php echo $stop->getLongitude();?>], {icon: iconCircle}).addTo(mymap)
-                        .bindPopup("<h2><?php echo $stop->getName();?></h2><br /><p><?php echo $stop->getDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>&type=L&s=<?php echo ($x+1)?>&t=<?php echo count($stops)?>&expid=<?php echo $_GET['id'] ?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
+                        .bindPopup("<h2><?php echo $stop->getName();?></h2><br /><p><?php echo $stop->getShortDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>&type=L&s=<?php echo ($x+1)?>&t=<?php echo count($stops)?>&expid=<?php echo $_GET['id'] ?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
                /* m.bindLabel("My Label");*/
     
                 m.openPopup();
@@ -179,10 +179,10 @@ L.marker([44.6488, -63.5752], {icon: iconCircle}).addTo(mymap)
                 color: '#3EB9FD',
                 fillColor: '#3EB9FD',
                 fillOpacity: 0.6
-              }).addTo(mymap).bindPopup("<h2><?php echo $stop->getName()?></h2><br /><p><?php echo $stop->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>&type=A&s=<?php echo ($x+1)?>&t=<?php echo count($stops)?>&expid=<?php echo $_GET['id'] ?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
+              }).addTo(mymap).bindPopup("<h2><?php echo $stop->getName()?></h2><br /><p><?php echo $stop->getShortDes();?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>&type=A&s=<?php echo ($x+1)?>&t=<?php echo count($stops)?>&expid=<?php echo $_GET['id'] ?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
      
 	   m = L.marker([area.getBounds().getCenter().lat, area.getBounds().getCenter().lng], {icon: iconCircle}).addTo(mymap)
-                        .bindPopup("<h2><?php echo $stop->getName();?></h2><br /><p><?php echo $stop->getDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>&type=A&s=<?php echo ($x+1)?>&t=<?php echo count($stops)?>&expid=<?php echo $_GET['id'] ?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
+                        .bindPopup("<h2><?php echo $stop->getName();?></h2><br /><p><?php echo $stop->getShortDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>&type=A&s=<?php echo ($x+1)?>&t=<?php echo count($stops)?>&expid=<?php echo $_GET['id'] ?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
              
     
                 m.openPopup();

@@ -340,7 +340,7 @@ Map
 
 
     var m = L.marker([<?php echo $location->getLatitude() ?>, <?php echo $location->getLongitude() ?>], {icon: iconCircle}).addTo(mymap)
-	.bindPopup("<?php echo $location->getName()?></h2><br /><p><?php echo $location->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $location->getID();?>&type=L'>VIEW LOCATION</a>");
+	.bindPopup("<?php echo $location->getName()?></h2><br /><p><?php echo $location->getShortDes();?></p><br /><a href='placeSingle.php?id=<?php echo $location->getID();?>&type=L'>VIEW LOCATION</a>");
 
 
         m.openPopup();
@@ -396,7 +396,7 @@ Map
     color: '#3EB9FD',
     fillColor: '#3EB9FD',
     fillOpacity: 0.6
-  }).addTo(mymap).bindPopup("<h2><?php echo $area->getName()?></h2><br /><p><?php echo $area->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $area->getID();?>&type=A'>VIEW AREA</a>");
+  }).addTo(mymap).bindPopup("<h2><?php echo $area->getName()?></h2><br /><p><?php echo $area->getShortDes();?></p><br /><a href='placeSingle.php?id=<?php echo $area->getID();?>&type=A'>VIEW AREA</a>");
 
 
             area.openPopup();

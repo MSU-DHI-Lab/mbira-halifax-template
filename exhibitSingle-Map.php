@@ -140,7 +140,7 @@ Map
         m = L.marker([<?php echo $loc->getLatitude() ;?>, <?php echo $loc->getLongitude();?>], {icon: iconCircle}).addTo(mymap);
         
                 
-        var popup = L.popup().setContent("<h2><?php echo $loc->getName();?></h2><br /><p><?php echo $loc->getDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $loc->getID();?>&type=L'>VIEW LOCATION</a>")
+        var popup = L.popup().setContent("<h2><?php echo $loc->getName();?></h2><br /><p><?php echo $loc->getShortDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $loc->getID();?>&type=L'>VIEW LOCATION</a>")
         
         var Options = {
             'className' : 'custom<?php echo $loc_ids[$x]?>'
@@ -191,7 +191,7 @@ Map
                 fillOpacity: 0.6
                 }).addTo(mymap);
     
-            area.bindPopup("<h2><?php echo $area->getName()?></h2><br /><p><?php echo $area->getDes();?></p><br /><a href='placeSingle.php?id=<?php echo $area->getID();?>&type=A'>VIEW AREA</a>");
+            area.bindPopup("<h2><?php echo $area->getName()?></h2><br /><p><?php echo $area->getShortDes();?></p><br /><a href='placeSingle.php?id=<?php echo $area->getID();?>&type=A'>VIEW AREA</a>");
     
     
             area.openPopup();
