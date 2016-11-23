@@ -65,7 +65,7 @@ Exhibit Nav & About
 			</div>
 		</a>
 	</div>
-	<p><?php echo $exhibit->getDes(); ?></p>
+	<div id="description_place"><?php echo $exhibit->getDes(); ?></div>
 </section>
 
 <!--===============================

@@ -354,15 +354,20 @@ Exhibit Nave & About
 
 
 	</div>
-	<p>
-        <?php
-        if($placeType == "L") {
-            echo $location->getDes();
-        }
-        else if($placeType == "A") {
-            echo $area->getDes();
-        }?>
-    </p>
+<?php
+    $place_str = '<div id="description_place">';
+	
+    if($placeType == "L") {
+        $place_str .= $location->getDes();
+    }
+    else if($placeType == "A") {
+        $place_str .= $area->getDes();
+
+    $place_str .= "</div>";
+    
+    }
+    printf($place_str);
+?>
 </section>
 
 <!--===============================

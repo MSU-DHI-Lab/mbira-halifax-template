@@ -694,6 +694,14 @@ through a media query only recognized in IE */
   top: 8px;
   left: 14px;
 }
+#description_place {
+  color: #fff;
+  width: 100%;
+  max-width: 1000px;
+  font-size: 16px;
+  line-height: 2;
+  text-align: left;
+}
 @media screen and (max-width: 600px) {
   #main {
     padding: 10% 4%;

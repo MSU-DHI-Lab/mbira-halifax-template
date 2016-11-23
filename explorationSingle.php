@@ -77,7 +77,7 @@ Exploration Nav & About
     ?>
 
 	</div>
-	<p><?php $exploration->getDes();?></p>
+	<div id="description_place"><?php $exploration->getDes();?></div>
 </section>
 
 <!--===============================
