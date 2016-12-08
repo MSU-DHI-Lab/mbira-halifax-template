@@ -25,7 +25,7 @@ Sign In Title
 ================================-->
 <?php if(isset($_SESSION['user'])){ ?>
 <section id='main' class="signInUp">
-	<h2 class="signInUp">You're already logged in, click the button below to logout.</h2>
+	<h2 class="signInUp">You are logged in, click the button below to log out.</h2>
 </section>
 <section id='signInUp' class="main">
     <form class="signInUpForm" name="login" action="logout-post.php" method="post" accept-charset="utf-8">

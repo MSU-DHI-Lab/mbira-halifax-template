@@ -71,20 +71,15 @@ Map
 	<script src="js/leaflet/leaflet.markercluster-src.js"></script>
 
 <script>
-	var mymap = L.map('mapid').setView([37.7895, -99.3325], 4);
+	var map = L.map('mapid').setView([37.7895, -99.3325], 4);
 
     var pointsArry = Array();
     $('.findMyLocation').on('click', function(){
-        mymap.locate({setView: true, maxZoom: 15});
+        map.locate({setView: true, maxZoom: 15});
     });
 
     
-    L.tileLayer('https://api.mapbox.com/styles/v1/austintruchan/cinjdipo0001rb9nkjjhlaquk/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXVzdGludHJ1Y2hhbiIsImEiOiI2WHhzNWFFIn0.yOkdF1byJMqUuHrn7rJhSQ', {
-		attribution: 'Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"http://mapbox.com\">Mapbox</a>',
-		maxZoom: 18,
-		id: 'austintruchan.cinjdipo0001rb9nkjjhlaquk',
-		accessToken: 'pk.eyJ1IjoiYXVzdGludHJ1Y2hhbiIsImEiOiI2WHhzNWFFIn0.yOkdF1byJMqUuHrn7rJhSQ'
-	}).addTo(mymap);
+    L.tileLayer(tileURL, tileParameters).addTo(map);
 
 	var iconCircle = L.icon({
 		iconUrl: 'js/leaflet/images/marker-icon.svg',
@@ -93,6 +88,14 @@ Map
 			iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
 		popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
 	});
+
+    var iconPerson = L.icon({
+        iconUrl: 'js/leaflet/images/person-icon.svg',
+
+            iconSize:     [25, 25], // size of the icon
+            iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
+        popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
+    });
 		
 	var markerClusters = L.markerClusterGroup();
 	
@@ -137,7 +140,7 @@ Map
 		});
 
         
-        m = L.marker([<?php echo $loc->getLatitude() ;?>, <?php echo $loc->getLongitude();?>], {icon: iconCircle}).addTo(mymap);
+        m = L.marker([<?php echo $loc->getLatitude() ;?>, <?php echo $loc->getLongitude();?>], {icon: iconCircle}).addTo(map);
         
                 
         var popup = L.popup().setContent("<h2><?php echo $loc->getName();?></h2><br /><p><?php echo $loc->getShortDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $loc->getID();?>&type=L'>VIEW LOCATION</a>")
@@ -189,7 +192,7 @@ Map
                 color: '#3EB9FD',
                 fillColor: '#3EB9FD',
                 fillOpacity: 0.6
-                }).addTo(mymap);
+                }).addTo(map);
     
             area.bindPopup("<h2><?php echo $area->getName()?></h2><br /><p><?php echo $area->getShortDes();?></p><br /><a href='placeSingle.php?id=<?php echo $area->getID();?>&type=A'>VIEW AREA</a>");
     
@@ -216,8 +219,8 @@ Map
     <?php } ?>
     
     var group = new L.featureGroup(pointsArry);
-    mymap.addLayer(markerClusters);
-    mymap.fitBounds(group.getBounds());
+    map.addLayer(markerClusters);
+    map.fitBounds(group.getBounds());
 </script>
 
 <!--===============================

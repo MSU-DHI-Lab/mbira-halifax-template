@@ -543,6 +543,15 @@ $('.openModalStartConversation').click(function() {
 	$('body').addClass('modal-open');
 	return false;
 });
+
+$('#modalStartConversation').click(function(e){
+      if (e.target !== this)
+        return;
+
+    $('#modalStartConversation').removeClass('displayModal');
+    $('body').removeClass('modal-open');    
+})
+
 $('.closeModalStartConversation').click(function() {
 	$('#modalStartConversation').removeClass('displayModal');
 	$('body').removeClass('modal-open');

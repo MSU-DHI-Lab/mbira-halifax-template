@@ -27,7 +27,7 @@ Sign In Form & Submit
 <section id='signInUp' class="main">
 	<form class="signInUpForm" name="login" action="signIn.php" method="post" accept-charset="utf-8">
 			 <input class="Submit" type="submit" value="LOG OUT?"><br>
-
+	</form>
 </section>
 
 <!--===============================

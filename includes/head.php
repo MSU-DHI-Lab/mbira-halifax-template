@@ -15,5 +15,9 @@
 	<script src="js/modernizr.js"></script>
 	<script src="js/navMenu.js"></script>
 	<script src='https://www.google.com/recaptcha/api.js'></script>
+  <script type="text/javascript">
+    var tileURL = "<?php echo $mapTileURL; ?>";
+    var tileParameters = <?php echo $mapTileParameters; ?>;
+  </script>
 </head>
 <body>

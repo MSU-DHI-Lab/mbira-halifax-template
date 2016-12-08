@@ -58,7 +58,17 @@ jQuery(document).ready(function(){
 				console.log('search clicked');
 				return;
 			}
-			console.log('click 2');
+			if ($(event.target).is('.findMyLocation')) {
+		    $.getJSON("http://jsonip.com/?callback=?", function (data) {
+		        $.getJSON("http://freegeoip.net/json/"+data.ip, function (data) {
+		        	console.log(data);
+					    var m = L.marker([data.latitude, data.longitude], {icon: iconPerson}).addTo(map)
+								.bindPopup("<h2>Your Location</h2><br /><p>This is approximately where you are relative to everything!</p>");
+		        	map.setView([data.latitude, data.longitude],15)
+		        });
+		        
+		    });
+			}
 			( !$(event.target).is('.cd-nav-trigger-search') && !$(event.target).is('.cd-nav-trigger-search span') ) && stretchyNavsSearch.removeClass('nav-is-visible');
 			if(stretchyNavsSearch.hasClass('nav-is-visible')){
 				console.log('focus on text');

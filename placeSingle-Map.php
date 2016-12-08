@@ -316,30 +316,32 @@ Map
 <div class='custom-popup' id="mapid"></div>
 <div class='findMyLocation'></div>
 
- <script src="js/leaflet/leaflet.js"></script>
+<script src="js/leaflet/leaflet.js"></script>
+<script type="text/javascript">
+    var iconCircle = L.icon({
+        iconUrl: 'js/leaflet/images/marker-icon.svg',
+
+            iconSize:     [25, 25], // size of the icon
+            iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
+        popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
+    });
+
+    var iconPerson = L.icon({
+        iconUrl: 'js/leaflet/images/person-icon.svg',
+
+            iconSize:     [25, 25], // size of the icon
+            iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
+        popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
+    });
+    
+</script>
 <?php if($placeType == "L") { ?>
 	<script>
 
-	var mymap = L.map('mapid').setView([<?php echo $location->getLatitude() ?>, <?php echo $location->getLongitude() ?>], 13);
-	L.tileLayer('https://api.mapbox.com/styles/v1/austintruchan/cinjdipo0001rb9nkjjhlaquk/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXVzdGludHJ1Y2hhbiIsImEiOiI2WHhzNWFFIn0.yOkdF1byJMqUuHrn7rJhSQ', {
-		attribution: 'Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"http://mapbox.com\">Mapbox</a>',
-		maxZoom: 18,
-		id: 'austintruchan.cinjdipo0001rb9nkjjhlaquk',
-		accessToken: 'pk.eyJ1IjoiYXVzdGludHJ1Y2hhbiIsImEiOiI2WHhzNWFFIn0.yOkdF1byJMqUuHrn7rJhSQ'
-	}).addTo(mymap);
+	var map = L.map('mapid').setView([<?php echo $location->getLatitude() ?>, <?php echo $location->getLongitude() ?>], 13);
+	L.tileLayer(tileURL, tileParameters).addTo(map);
 
-	var iconCircle = L.icon({
-		iconUrl: 'js/leaflet/images/marker-icon.svg',
-
-			iconSize:     [25, 25], // size of the icon
-			iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
-		popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
-	});
-
-
-
-
-    var m = L.marker([<?php echo $location->getLatitude() ?>, <?php echo $location->getLongitude() ?>], {icon: iconCircle}).addTo(mymap)
+    var m = L.marker([<?php echo $location->getLatitude() ?>, <?php echo $location->getLongitude() ?>], {icon: iconCircle}).addTo(map)
 	.bindPopup("<?php echo $location->getName()?></h2><br /><p><?php echo $location->getShortDes();?></p><br /><a href='placeSingle.php?id=<?php echo $location->getID();?>&type=L'>VIEW LOCATION</a>");
 
 
@@ -367,22 +369,9 @@ Map
 
 <?php if($placeType == "A") { ?>
 	<script>
-		var mymap = L.map('mapid').setView([<?php echo $area->getCenter()[0];?>, <?php echo $area->getCenter()[1];?>], 13);
+		var map = L.map('mapid').setView([<?php echo $area->getCenter()[0];?>, <?php echo $area->getCenter()[1];?>], 13);
 
-		L.tileLayer('https://api.mapbox.com/styles/v1/austintruchan/cinjdipo0001rb9nkjjhlaquk/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXVzdGludHJ1Y2hhbiIsImEiOiI2WHhzNWFFIn0.yOkdF1byJMqUuHrn7rJhSQ', {
-			attribution: 'Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"http://mapbox.com\">Mapbox</a>',
-			maxZoom: 18,
-			id: 'austintruchan.cinjdipo0001rb9nkjjhlaquk',
-			accessToken: 'pk.eyJ1IjoiYXVzdGludHJ1Y2hhbiIsImEiOiI2WHhzNWFFIn0.yOkdF1byJMqUuHrn7rJhSQ'
-		}).addTo(mymap);
-
-		var iconCircle = L.icon({
-			iconUrl: 'js/leaflet/images/marker-icon.svg',
-
-				iconSize:     [25, 25], // size of the icon
-				iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
-			popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
-		});
+		L.tileLayer(tileURL, tileParameters).addTo(map);
 
         var pointsArry = Array();
 		var coords = <?php echo $area->getCoordinates(); ?>;
@@ -396,7 +385,7 @@ Map
     color: '#3EB9FD',
     fillColor: '#3EB9FD',
     fillOpacity: 0.6
-  }).addTo(mymap).bindPopup("<h2><?php echo $area->getName()?></h2><br /><p><?php echo $area->getShortDes();?></p><br /><a href='placeSingle.php?id=<?php echo $area->getID();?>&type=A'>VIEW AREA</a>");
+  }).addTo(map).bindPopup("<h2><?php echo $area->getName()?></h2><br /><p><?php echo $area->getShortDes();?></p><br /><a href='placeSingle.php?id=<?php echo $area->getID();?>&type=A'>VIEW AREA</a>");
 
 
             area.openPopup();
@@ -418,7 +407,7 @@ Map
 
 
         var group = new L.featureGroup(pointsArry);
-        mymap.fitBounds(group.getBounds());
+        map.fitBounds(group.getBounds());
 
 	</script>
 <?php } ?>

@@ -47,14 +47,9 @@ Map
  <script src="js/leaflet/leaflet.js"></script>
 
 <script>
-var mymap = L.map('mapid').setView([44.6488, -63.5752], 13);
+var map = L.map('mapid').setView([44.6488, -63.5752], 13);
 
-L.tileLayer('https://api.mapbox.com/styles/v1/austintruchan/cinjdipo0001rb9nkjjhlaquk/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXVzdGludHJ1Y2hhbiIsImEiOiI2WHhzNWFFIn0.yOkdF1byJMqUuHrn7rJhSQ', {
-    attribution: 'Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"http://mapbox.com\">Mapbox</a>',
-    maxZoom: 18,
-    id: 'austintruchan.cinjdipo0001rb9nkjjhlaquk',
-    accessToken: 'pk.eyJ1IjoiYXVzdGludHJ1Y2hhbiIsImEiOiI2WHhzNWFFIn0.yOkdF1byJMqUuHrn7rJhSQ'
-}).addTo(mymap);
+L.tileLayer(tileURL, tileParameters).addTo(map);
 
 /* var iconCircle = L.icon({
     iconUrl: 'js/leaflet/images/marker-icon.svg',
@@ -64,7 +59,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/austintruchan/cinjdipo0001rb9nkjjh
 }); */
 
 /*
-L.marker([44.6488, -63.5752], {icon: iconCircle}).addTo(mymap)
+L.marker([44.6488, -63.5752], {icon: iconCircle}).addTo(map)
 .bindPopup("<h2>Location Name Goes Here. Looks Pretty Cool!</h2><br /><p>Place description Decipherment dream of the mind's eye brain is the seed of intelligence. Science courage of our questions decipherment? Sea of Tranquility another world bits of moving fluff vastness is bearable only through love the only home we've ever known light years?Place description Decipherment dream of the mind's eye brain is the seed of intelligence. Science courage of our questions decipherment? Sea of Tranquility another world bits of moving fluff vastness is bearable only through love the only home we've ever known light years?</p><br /><a href='placeSingle.php'>VIEW LOCATION</a>");
 */
          
@@ -127,8 +122,16 @@ L.marker([44.6488, -63.5752], {icon: iconCircle}).addTo(mymap)
 					popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
 				});
 	 
+                var iconPerson = L.icon({
+                    iconUrl: 'js/leaflet/images/person-icon.svg',
+
+                        iconSize:     [25, 25], // size of the icon
+                        iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
+                    popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
+                });
+
 	 
-                m = L.marker([<?php echo $stop->getLatitude() ;?>, <?php echo $stop->getLongitude();?>], {icon: iconCircle}).addTo(mymap)
+                m = L.marker([<?php echo $stop->getLatitude() ;?>, <?php echo $stop->getLongitude();?>], {icon: iconCircle}).addTo(map)
                         .bindPopup("<h2><?php echo $stop->getName();?></h2><br /><p><?php echo $stop->getShortDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>&type=L&s=<?php echo ($x+1)?>&t=<?php echo count($stops)?>&expid=<?php echo $_GET['id'] ?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
                /* m.bindLabel("My Label");*/
     
@@ -153,7 +156,7 @@ L.marker([44.6488, -63.5752], {icon: iconCircle}).addTo(mymap)
     
                 pointsArry.push(m);
                 latlng.push([<?php echo $stop->getLatitude() ;?>, <?php echo $stop->getLongitude();?>]);
-                /*m.addTo(mymap);*/
+                /*m.addTo(map);*/
      <?php } ?>
      
      <?php            
@@ -172,6 +175,14 @@ L.marker([44.6488, -63.5752], {icon: iconCircle}).addTo(mymap)
 						iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
 					popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
 				});
+
+                var iconPerson = L.icon({
+                    iconUrl: 'js/leaflet/images/person-icon.svg',
+
+                        iconSize:     [25, 25], // size of the icon
+                        iconAnchor:   [8, 8], // point of the icon which will correspond to marker's location
+                    popupAnchor:  [0, -15] // point from which the popup should open relative to the iconAnchor
+                });
 	
                 var coords = <?php echo $stop->getCoordinates(); ?>;
                 
@@ -179,9 +190,9 @@ L.marker([44.6488, -63.5752], {icon: iconCircle}).addTo(mymap)
                 color: '#3EB9FD',
                 fillColor: '#3EB9FD',
                 fillOpacity: 0.6
-              }).addTo(mymap).bindPopup("<h2><?php echo $stop->getName()?></h2><br /><p><?php echo $stop->getShortDes();?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>&type=A&s=<?php echo ($x+1)?>&t=<?php echo count($stops)?>&expid=<?php echo $_GET['id'] ?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
+              }).addTo(map).bindPopup("<h2><?php echo $stop->getName()?></h2><br /><p><?php echo $stop->getShortDes();?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>&type=A&s=<?php echo ($x+1)?>&t=<?php echo count($stops)?>&expid=<?php echo $_GET['id'] ?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
      
-	   m = L.marker([area.getBounds().getCenter().lat, area.getBounds().getCenter().lng], {icon: iconCircle}).addTo(mymap)
+	   m = L.marker([area.getBounds().getCenter().lat, area.getBounds().getCenter().lng], {icon: iconCircle}).addTo(map)
                         .bindPopup("<h2><?php echo $stop->getName();?></h2><br /><p><?php echo $stop->getShortDes(); ?></p><br /><a href='placeSingle.php?id=<?php echo $stop->getID();?>&type=A&s=<?php echo ($x+1)?>&t=<?php echo count($stops)?>&expid=<?php echo $_GET['id'] ?>'>Start Exploration (Stop <?php echo ($x+1) ;?> of <?php echo ' '.count($stops)?>)</a>");
              
     
@@ -225,9 +236,9 @@ L.marker([44.6488, -63.5752], {icon: iconCircle}).addTo(mymap)
          <?php } ?>     
     <?php } ?>
      
-    var polyline = L.polyline(latlng, {color: 'white', weight: 2}).addTo(mymap);
+    var polyline = L.polyline(latlng, {color: 'white', weight: 2}).addTo(map);
     var group = new L.featureGroup(pointsArry);
-    mymap.fitBounds(group.getBounds());
+    map.fitBounds(group.getBounds());
      
 </script>
 
