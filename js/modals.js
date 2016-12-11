@@ -35,6 +35,7 @@ $('.openModal').click(function() {
 	return false;
 });
 
+
 $('.closeModal').click(function() {
 	$('#modal').removeClass('displayModal');
 	$('body').removeClass('modal-open');

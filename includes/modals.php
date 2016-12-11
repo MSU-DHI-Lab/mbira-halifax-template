@@ -12,3 +12,14 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+$('#modal').click(function(e){
+      if (e.target !== this)
+        return;
+
+      console.log("SDFsd")
+    $('#modal').removeClass('displayModal');
+    $('body').removeClass('modal-open');    
+})
+</script>

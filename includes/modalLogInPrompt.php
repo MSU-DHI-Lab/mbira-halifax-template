@@ -46,6 +46,15 @@ $('.forgotPassword').click(function() {
 	$('body').addClass('modal-open');
 	return false;
 });
+
+$('#modalLogInPrompt').click(function(e){
+      if (e.target !== this)
+        return;
+
+    $('#modalLogInPrompt').removeClass('displayModal');
+    $('body').removeClass('modal-open');    
+})
+
 $('.closeModalPwdPrompt').click(function() {
 	$('#modalForgotPasswordPrompt').removeClass('displayModal');
 	$('body').removeClass('modal-open');

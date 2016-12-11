@@ -1,7 +1,14 @@
 <?php
+  $login = false;
+  require_once "lib/site.php";
+  if (!isset($_SESSION['validating-text'])) {
+    header("location: index.php");
+    exit;
+  }
 
-$login = false;
-require_once "lib/site.php";
+  $pagename = 'Validating';
+  include('includes/head.php');
+  include('includes/header.php');
 ?>
 
 <!--===============================
@@ -16,7 +23,6 @@ Sign Up Title
 ================================-->
 <section id='main' class="signInUp">
 	<h2 class="signInUp">Validating</h2>
-</section>
 
 <h1 id="loginHeader">Validating</h1>
 <p>
@@ -24,6 +30,15 @@ Sign Up Title
   echo $_SESSION['validating-text'];
   unset($_SESSION['validating-text']);
 ?></p>
-<p><a href="signIn.php">Back to Login</a> </p>
+<p><a style="color: #3EB9FD" href="signIn.php">Back to Login</a> </p>
 
-</form>
+</section>
+
+<!--===============================
+Scripts & Footer
+================================-->
+  <script src='js/index.js'></script>
+  <script src='js/modals.js'></script>
+<?php
+  include('includes/footer.php');
+?>
