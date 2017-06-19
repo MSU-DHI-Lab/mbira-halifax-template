@@ -19,7 +19,7 @@ Based on the metaphor of “space and landscape as museum,” mbira lets users c
 
 ### Halifax
 
-Halifax is one of two mobile-first front end webs tempaltes included in this community beta release (the other being [Cusco](https://github.com/matrix-msu/mbira-cusco-template)).  Interested in seeing Halifax in action?  Check out [Colonial Cartagena](http://colonialcartagena.matrix.msu.edu/), an exemplar mbira project built by [Ana Maria Silva[(https://twitter.com/anamsilva29) (a PhD Candidate in History at the University of Michigan) that allows people to explore historic port and fortress of Cartegena which has been designated UNESCO World Heritage site
+Halifax is one of two mobile-first front end webs tempaltes included in this community beta release (the other being [Cusco](https://github.com/matrix-msu/mbira-cusco-template)).  Interested in seeing Halifax in action?  Check out [Colonial Cartagena](http://colonialcartagena.matrix.msu.edu/), an exemplar mbira project built by [Ana Maria Silva](https://twitter.com/anamsilva29) (a PhD Candidate in History at the University of Michigan) that allows people to explore historic port and fortress of Cartegena which has been designated UNESCO World Heritage site
  
 ### Current Development Status & Roadmap
 
