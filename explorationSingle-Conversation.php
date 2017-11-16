@@ -10,6 +10,9 @@
 		if($id == 0) {
 			$id = 1;
 		}
+		if(!is_numeric($id)) {
+			$id = 1;
+		}
 		$exploration = $explorations->get($id);
         $stops = $exploration->getStops();
 	}
@@ -38,18 +41,18 @@ Landing Image
 	Place NavBar
 	================================-->
 	<div class="placeNavBar">
-		<a class="back" href="explorationSingle-Conversations.php?id=<?php echo $_GET['id'];?>"><img class="backArrow" src="assets/svgs/arrow.svg"/><p class="backExhibitTitle">Back To All Conversations</p></a>
+		<a class="back" href="explorationSingle-Conversations.php?id=<?php echo $id;?>"><img class="backArrow" src="assets/svgs/arrow.svg"/><p class="backExhibitTitle">Back To All Conversations</p></a>
 		<div class="right">
-			<a href="explorationSingle-Map.php?id=<?php echo $_GET['id'];?>">Map</a>
-			<a class="active" href="explorationSingle-Conversations.php?id=<?php echo $_GET['id'];?>">Conversations</a></div>
+			<a href="explorationSingle-Map.php?id=<?php echo $id;?>">Map</a>
+			<a class="active" href="explorationSingle-Conversations.php?id=<?php echo $id;?>">Conversations</a></div>
 	</div>
 
 
 <!--===============================
 Replies to Conversation
 ================================-->
-<?php if(isset($_GET['id'])) {
-		$id = $_GET['id'];
+<?php if(isset($id)) {
+		$id = $id;
 		$convo = $_GET['convo'];
         $sql ="SELECT id, user_id, exploration_id, replyTo, isPending, UNIX_TIMESTAMP(created_at), deleted, comment FROM mbira_exploration_comments WHERE exploration_id=:exploration AND (id=:id OR replyTo=:reply)";
         $pdo = new PDO("mysql:dbname=$dbname;host=$dbhost;charset=utf8", $dbuser, $dbpass);

@@ -10,6 +10,9 @@
 		if($id == 0) {
 			$id = 1;
 		}
+		if(!is_numeric($id)) {
+			$id = 1;
+		}
 		$exploration = $explorations->get($id);
         $stops = $exploration->getStops();
 	}
@@ -42,10 +45,10 @@ Landing Image
 	Place NavBar
 	================================-->
 	<div class="placeNavBar">
-		<a class="back" href="explorationSingle.php?id=<?php echo $_GET['id'];?>"><img class="backArrow" src="assets/svgs/arrow.svg"/><p class="backTitle"><?php echo $exploration->getName();?>
+		<a class="back" href="explorationSingle.php?id=<?php echo $id;?>"><img class="backArrow" src="assets/svgs/arrow.svg"/><p class="backTitle"><?php echo $exploration->getName();?>
 		<div class="right">
-			<a href="explorationSingle-Map.php?id=<?php echo $_GET['id'];?>">Map</a>
-			<a class="active"  href="explorationSingle-Conversations.php?id=<?php echo $_GET['id'];?>">Conversations</a></div>
+			<a href="explorationSingle-Map.php?id=<?php echo $id;?>">Map</a>
+			<a class="active"  href="explorationSingle-Conversations.php?id=<?php echo $id;?>">Conversations</a></div>
 	</div>
 
 
@@ -79,7 +82,7 @@ Conversations
 <?php
         
 
-		$id = $_GET['id'];
+		$id = $id;
         $titleName = $exploration->getName();
         $type_php = 'explorationSingle.php';
         	$sql =<<<SQL
@@ -196,7 +199,7 @@ SQL;
                 ?>
                 
                 <p><?php echo $replies_ct?> Particpants</p>
-                <a href="explorationSingle-Conversation.php?id=<?php echo $_GET['id']?>&convo=<?php echo $comments[$i]['comment_id']; ?>">VIEW CONVERSATION <img src="assets/svgs/arrowBlue.svg"/></a>
+                <a href="explorationSingle-Conversation.php?id=<?php echo $id?>&convo=<?php echo $comments[$i]['comment_id']; ?>">VIEW CONVERSATION <img src="assets/svgs/arrowBlue.svg"/></a>
             </div>
         </div>
     
@@ -235,7 +238,7 @@ Modals Include
              $params = "&s=".$step."&t=".$total."&expid=".$expid; 
     } 
 
-    /*$redirectLocation = "placeSingle-Conversations.php?id=".$_GET['id']."&type=".$_GET['type'].$params;*/
+    /*$redirectLocation = "placeSingle-Conversations.php?id=".$id."&type=".$_GET['type'].$params;*/
 
     /*$redirectLocation = $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];*/
     $redirectLocation = $_SERVER['REQUEST_URI'];

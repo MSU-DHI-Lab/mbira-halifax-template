@@ -10,6 +10,9 @@
 		if($id == 0) {
 			$id = 1;
 		}
+		if(!is_numeric($id)) {
+			$id = 1;
+		}
 		$exhibit = $exhibits->get($id);
         $location = $locations->get($id);
         $area = $areas->get($id);
@@ -41,7 +44,7 @@
 Place NavBar
 ================================-->
 <div class="placeNavBar">
-	<a class="back" href="exhibitSingle.php?id=<?php echo $_GET['id']?>"><img class="backArrow" src="assets/svgs/arrow.svg"/>
+	<a class="back" href="exhibitSingle.php?id=<?php echo $id?>"><img class="backArrow" src="assets/svgs/arrow.svg"/>
         <p class="backExhibitTitle">
             <?php echo $exhibit->getName() ?>
         </p>

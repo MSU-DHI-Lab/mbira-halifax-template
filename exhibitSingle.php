@@ -16,6 +16,9 @@
 		if($id == 0) {
 			$id = 1;
 		}
+		if(!is_numeric($id)) {
+			$id = 1;
+		}
 		$exhibit = $exhibits->get($id);
         $location = $locations->get($id);
         $area = $areas->get($id);
@@ -58,7 +61,7 @@ Exhibit Nav & About
 <section id='main'>
 	<h2><?php echo $exhibit->getName(); ?></h2>
 	<div class="placeNav">
-		<a href="exhibitSingle-Map.php?id=<?php echo $_GET['id']; ?>">
+		<a href="exhibitSingle-Map.php?id=<?php echo $id; ?>">
 			<div class="placeNavItem">
 			<img src="assets/svgs/map.svg"/>
 				<p class="placeNavItemTitle">EXPLORE EXHIBIT</p>

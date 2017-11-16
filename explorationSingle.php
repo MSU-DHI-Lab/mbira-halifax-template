@@ -15,6 +15,9 @@
 		if($id == 0) {
 			$id = 1;
 		}
+		if(!is_numeric($id)) {
+			$id = 1;
+		}
 	$exploration = $explorations->get($id);
         $stops = $exploration->getStops();
 		$area = $areas->get($id);
@@ -51,7 +54,7 @@ Exploration Nav & About
 <section id='main'>
 	<h2><?php echo $exploration->getName(); ?></h2>
 	<div class="placeNav">
-		<a href="explorationSingle-Map.php?id=<?php echo $_GET['id']; ?>">
+		<a href="explorationSingle-Map.php?id=<?php echo $id; ?>">
 			<div class="placeNavItem">
 			<img src="assets/svgs/map.svg"/>
 				<p class="placeNavItemTitle">START EXPLORATION</p>
@@ -60,11 +63,11 @@ Exploration Nav & About
 
 
     <?php
-        foreach($explorations->getCommentsToggle($_GET['id'])[0] as $val)
+        foreach($explorations->getCommentsToggle($id)[0] as $val)
         {
             if($val == "true"){
     ?>
-    <a href="explorationSingle-Conversations.php?id=<?php echo $_GET['id']; ?>">
+    <a href="explorationSingle-Conversations.php?id=<?php echo $id; ?>">
       <div class="placeNavItem">
         <img src="assets/svgs/conversations.svg"/>
         <p class="placeNavItemTitle">VIEW CONVERSATIONS</p>
@@ -105,7 +108,7 @@ Exploration Stops
                                 </div>
                                 <div class="collection-info">
                                         <h2 class="collection-title">'.$stop->getName().'</h2>
-                                                <a href="placeSingle.php?id='.$stops[$x].'&type=L&s='.($x+1).'&t='.count($stops).'&expid='.$_GET['id'].'" class="collection-link">View Project</a>
+                                                <a href="placeSingle.php?id='.$stops[$x].'&type=L&s='.($x+1).'&t='.count($stops).'&expid='.$id.'" class="collection-link">View Project</a>
                                 </div>
                             </div>
                         ';
@@ -120,7 +123,7 @@ Exploration Stops
                                 </div>
                                 <div class="collection-info">
                                         <h2 class="collection-title">'.$stop->getName().'</h2>
-                                                <a href="placeSingle.php?id='.str_replace("A", "", $stops[$x]).'&type=A&s='.($x+1).'&t='.count($stops).'&expid='.$_GET['id'].'" class="collection-link">View Project</a>
+                                                <a href="placeSingle.php?id='.str_replace("A", "", $stops[$x]).'&type=A&s='.($x+1).'&t='.count($stops).'&expid='.$id.'" class="collection-link">View Project</a>
                                 </div>
                             </div>
                         ';
@@ -138,7 +141,7 @@ Exploration Stops
                                 </div>
                                 <div class="collection-info">
                                         <h2 class="collection-title">'.$stop->getName().'</h2>
-                                                <a href="placeSingle.php?id='.$stops[$x].'&type=L&s='.($x+1).'&t='.count($stops).'&expid='.$_GET['id'].'" class="collection-link">View Project</a>
+                                                <a href="placeSingle.php?id='.$stops[$x].'&type=L&s='.($x+1).'&t='.count($stops).'&expid='.$id.'" class="collection-link">View Project</a>
                                 </div>
                             </div>
                         ';
@@ -153,7 +156,7 @@ Exploration Stops
                                 </div>
                                 <div class="collection-info">
                                         <h2 class="collection-title">'.$stop->getName().'</h2>
-                                                <a href="placeSingle.php?id='.str_replace("A", "", $stops[$x]).'&type=A&s='.($x+1).'&t='.count($stops).'&expid='.$_GET['id'].'" class="collection-link">View Project</a>
+                                                <a href="placeSingle.php?id='.str_replace("A", "", $stops[$x]).'&type=A&s='.($x+1).'&t='.count($stops).'&expid='.$id.'" class="collection-link">View Project</a>
                                 </div>
                             </div>
                         ';
